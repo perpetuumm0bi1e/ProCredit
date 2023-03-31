@@ -1,13 +1,16 @@
-*{
+* {
     font-family: 'Montserrat', sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
 }
-body{
+
+body {
     background: #F6F7F8;
 }
-.header{
+
+.header {
     height: 80px;
     background-color: white;
     box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
@@ -16,47 +19,58 @@ body{
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
 }
-#logo{
+
+#logo {
     font-family: 'Unbounded', cursive;
     color: #010101;
     letter-spacing: 2px;
     font-size: 30px;
     grid-column: 2/5;
 }
-#applications{
+
+#applications {
     font-size: 16px;
     grid-column: 9;
     color: #7C7C7C;
 }
-#applications:hover{
+
+#applications:hover {
     color: #010101;
 }
-#profile{
+
+#profile {
     font-size: 16px;
     grid-column: 10;
     color: #7C7C7C;
 }
-#profile:hover{
+
+#profile:hover {
     color: #010101;
 }
-.mainPage{
+
+.mainPage,
+.authoriaztionPage {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
     justify-items: center;
     max-width: 1300px;
-    margin-top: 200px;
+    margin-top: 100px;
     margin-bottom: 200px;
     margin-left: auto;
     margin-right: auto;
 }
-#services{
-    grid-column: 6 / 9;
+
+#services,
+#authoriaztion {
+    grid-column: 5 / 9;
     color: #010101;
     margin-bottom: 100px;
     font-size: 40px;
+    text-align: center;
 }
+
 .servicesBoxes {
     /*box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);*/
     height: 295px;
@@ -67,39 +81,113 @@ body{
     margin-top: 30px;
     transition: all 0.4s ease-in-out;
 }
+
 .servicesBoxes:hover {
     transition: all 0.4s ease-in-out;
     box-shadow: 5px 5px #404040;
 }
-#cashCreditBox{
+
+#cashCreditBox,
+#mortgageBox {
     grid-column: 1 / 5;
 }
-#creditCardBox{
-    grid-column: 5 / 10;
+
+#creditCardBox,
+#autoCreditBox {
+    grid-column: 5 / 9;
 }
-#educationCreditBox{
-    grid-column: 10 / 13;
+
+#educationCreditBox,
+#businessCreditBox {
+    grid-column: 9 / 13;
 }
-#mortgageBox{
-    grid-column: 1 / 5;
-}
-#autoCreditBox{
-    grid-column: 5 / 10;
-}
-#businessCreditBox{
-    grid-column: 10 / 13;
-}
-.servicesBoxes p{
+
+.servicesBoxes p {
     font-size: 20px;
     font-weight: 600;
 }
-.servicesBoxes img{
+
+.servicesBoxes img {
     height: 160px;
     width: 160px;
     margin: 45px 80px 0px;
 }
-.footer{
+
+#authorizationBox {
     box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    height: 400px;
+    width: 739px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 40px;
+    grid-column: 3 / 11;
+    margin-top: 30px;
+}
+
+#authorizationForm {
+    height: 400px;
+    width: 739px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.input {
+    padding: 5px;
+    width: 357;
+    height: 34;
+    grid-column: 3 / 11;
+    font-size: 20px;
+    border: 1 px solid #7C7C7C;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+.input:hover {
+    border: 1 px solid #010101;
+    transition: all 0.4s ease-in-out;
+}
+
+#login {
+    grid-row: 4;
+}
+
+#password {
+    grid-row: 6;
+}
+
+#submit {
+    width: 373;
+    height: 34;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1E1E1E;
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    transition: all 0.4s ease-in-out;
+    grid-column: 4 / 10;
+    grid-row: 9;
+}
+
+#submit:hover {
+    transition: all 0.4s ease-in-out;
+    box-shadow: 5px 5px #404040;
+}
+
+#newAccountButton {
+    width: 273;
+    height: 34;
+    font-size: 20px;
+    border: none;
+    background-color: #ffffff;
+    color: #1E1E1E;
+    grid-column: 4 / 10;
+    grid-row: 10;
+}
+
+.footer {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(12, 1fr);
@@ -108,9 +196,10 @@ body{
     background-color: #404040;
     height: 120px;
 }
-#author{
+
+#author {
     letter-spacing: 2px;
-    font-size: 16px;
+    font-size: 14px;
     grid-column: 5 / 9;
     color: #F6F7F8;
 }
