@@ -1,0 +1,116 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background: #F6F7F8;
+}
+.header{
+    height: 80px;
+    background-color: white;
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+}
+#logo{
+    font-family: 'Unbounded', cursive;
+    color: #010101;
+    letter-spacing: 2px;
+    font-size: 30px;
+    grid-column: 2/5;
+}
+#applications{
+    font-size: 16px;
+    grid-column: 9;
+    color: #7C7C7C;
+}
+#applications:hover{
+    color: #010101;
+}
+#profile{
+    font-size: 16px;
+    grid-column: 10;
+    color: #7C7C7C;
+}
+#profile:hover{
+    color: #010101;
+}
+.mainPage{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    justify-items: center;
+    max-width: 1300px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#services{
+    grid-column: 6 / 9;
+    color: #010101;
+    margin-bottom: 100px;
+    font-size: 40px;
+}
+.servicesBoxes {
+    /*box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);*/
+    height: 295px;
+    width: 320px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 40px;
+    margin-top: 30px;
+    transition: all 0.4s ease-in-out;
+}
+.servicesBoxes:hover {
+    transition: all 0.4s ease-in-out;
+    box-shadow: 5px 5px #404040;
+}
+#cashCreditBox{
+    grid-column: 1 / 5;
+}
+#creditCardBox{
+    grid-column: 5 / 10;
+}
+#educationCreditBox{
+    grid-column: 10 / 13;
+}
+#mortgageBox{
+    grid-column: 1 / 5;
+}
+#autoCreditBox{
+    grid-column: 5 / 10;
+}
+#businessCreditBox{
+    grid-column: 10 / 13;
+}
+.servicesBoxes p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.servicesBoxes img{
+    height: 160px;
+    width: 160px;
+    margin: 45px 80px 0px;
+}
+.footer{
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    justify-items: center;
+    background-color: #404040;
+    height: 120px;
+}
+#author{
+    letter-spacing: 2px;
+    font-size: 16px;
+    grid-column: 5 / 9;
+    color: #F6F7F8;
+}
