@@ -49,7 +49,8 @@ body {
 }
 
 .mainPage,
-.authoriaztionPage {
+.authoriaztionPage,
+.registrationPage {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(12, 1fr);
@@ -63,7 +64,8 @@ body {
 }
 
 #services,
-#authoriaztion {
+#authoriaztion,
+#registration {
     grid-column: 5 / 9;
     color: #010101;
     margin-bottom: 100px;
@@ -83,6 +85,8 @@ body {
 }
 
 .servicesBoxes:hover {
+    transform: translateX(-10px);
+    transform: translateY(-10px);
     transition: all 0.4s ease-in-out;
     box-shadow: 5px 5px #404040;
 }
@@ -116,17 +120,17 @@ body {
 #authorizationBox {
     box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
     height: 500px;
-    width: 739px;
+    width: 639px;
     background-color: #ffffff;
     border-radius: 30px;
-    padding: 40px;
+    padding: 100px;
     grid-column: 3 / 11;
     margin-top: 30px;
 }
 
 #authorizationForm {
-    height: 500px;
-    width: 739px;
+    height: inherit;
+    width: inherit;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -138,7 +142,7 @@ body {
     width: 257;
     height: 44;
     grid-column: 3 / 11;
-    font-size: 20px;
+    font-size: 18px;
     border: 2px solid #c7c7c7;
     border-radius: 5px;
     transition: all 0.4s ease-in-out;
@@ -157,24 +161,22 @@ body {
     grid-row: 5;
 }
 
-#submit {
+#submit{
     display: block;
     width: 373;
     height: 44;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
     background-color: #1E1E1E;
     transition: all 0.3s ease-in-out;
     grid-column: 4 / 10;
     grid-row: 9 / 11;
 }
-
 #submit:hover {
     transition: all 0.4s ease-in-out;
     box-shadow: 5px 5px #404040;
 }
-
 #submit:active {
     transform: translateX(10px);
     transform: translateY(5px);
@@ -191,9 +193,94 @@ body {
     grid-column: 4 / 10;
     grid-row: 11 / 13;
 }
-
 #newAccountButton:hover {
     font-weight: 500;
+}
+.subHeading{
+    font-size: 22px;
+    font-weight: 500;
+    color: #010101;
+}
+.explanation{
+    color: #c7c7c7;
+    font-size: 15px;
+}
+.explanation:hover{
+    color: #9d9d9d;
+}
+#registrationBox {
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    height: 500px;
+    width: 1000px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 100px 150px;
+    grid-column: 1 / 13;
+    margin-top: 30px;
+}
+#registrationForm {
+    height: inherit;
+    width: inherit;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 30px;
+}
+#createAnAccount {
+    display: block;
+    width: 373;
+    height: 44;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #1E1E1E;
+    transition: all 0.3s ease-in-out;
+    grid-column: 4 / 10;
+    grid-row: 8 / 11;
+}
+#createAnAccount:hover {
+    transition: all 0.4s ease-in-out;
+    box-shadow: 5px 5px #404040;
+}
+#createAnAccount:active {
+    transform: translateX(10px);
+    transform: translateY(5px);
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+#personalData{
+    grid-column: 1 / 6;
+    grid-row: 1;
+}
+#surname{
+    grid-column: 1 / 6;
+    grid-row: 2;
+}
+#name{
+    grid-column: 1 / 6;
+    grid-row: 3;
+}
+#patronymic{
+    grid-column: 1 / 6;
+    grid-row: 4;
+}
+#contactInformation{
+    grid-column: 8 / 13;
+    grid-row: 1;
+}
+#tel{
+    grid-column: 8 / 13;
+    grid-row: 2;
+}
+#email{
+    grid-column: 8 / 13;
+    grid-row: 3;
+}
+#emailExplanation{
+    grid-column: 8 / 13;
+    grid-row: 4;
+    margin-top: -15px;
+    margin-left: 15px;
 }
 .footer {
     display: grid;
@@ -201,7 +288,7 @@ body {
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
     justify-items: center;
-    background-color: #404040;
+    background-color: #c7c7c7;
     height: 120px;
 }
 

@@ -19,10 +19,43 @@
       <div class="header">
         <a href="mainPage.html" id="logo">Pro Credit</a>
         <a href="applicationsPage.html" id="applications">Заявки</a>
-        <a href="profilePage.html" id="profile">Профиль</a>
+        <a href="authorizationPage.html" id="profile">Профиль</a>
       </div>
     </header>
-    <main class="registrationPage"></main>
+    <main>
+      <div class="registrationPage">
+        <h1 id="registration">Регистрация</h1>
+        <div id="registrationBox">
+          <form id="registrationForm" method="post">
+            <p class="subHeading" id="personalData">Личные данные</p>
+            <input
+              type="text"
+              class="input"
+              id="surname"
+              placeholder="Фамилия" />
+            <input type="text" class="input" id="name" placeholder="Имя" />
+            <input
+              type="text"
+              class="input"
+              id="patronymic"
+              placeholder="Отчество" />
+            <p class="subHeading" id="contactInformation">
+              Контактная инормация
+            </p>
+            <input type="tel" class="input" id="tel" placeholder="+7" />
+            <input type="email" class="input" id="email" placeholder="email" />
+            <p class="explanation" id="emailExplanation">
+              Email используется для входа в аккаунт
+            </p>
+            <input
+              type="submit"
+              id="createAnAccount"
+              value="Создать аккаунт"
+              href="mainPage.html" />
+          </form>
+        </div>
+      </div>
+    </main>
     <footer class="footer">
       <p id="author">Disigned by @perpetuumm0bi1e</p>
     </footer>
