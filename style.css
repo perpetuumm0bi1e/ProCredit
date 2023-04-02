@@ -138,13 +138,13 @@ body {
     column-gap: 10px;
 }
 
-.input{
+.input {
     padding: 5px 15px;
     width: 257;
     height: 35;
     grid-column: 2 / 11;
     font-size: 16px;
-    border: 2px solid #c7c7c7;
+    border: 1px solid #c7c7c7;
     border-radius: 5px;
     transition: all 0.4s ease-in-out;
 }
@@ -162,7 +162,7 @@ body {
     grid-row: 2;
 }
 
-#submit{
+#submit {
     display: block;
     width: 373;
     height: 44;
@@ -170,20 +170,24 @@ body {
     font-size: 16px;
     color: #ffffff;
     background-color: #1E1E1E;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     grid-column: 3 / 10;
     grid-row: 4;
+    border: none;
 }
+
 #submit:hover {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
     box-shadow: 5px 5px #404040;
 }
+
 #submit:active {
     transform: translateX(10px);
     transform: translateY(5px);
     box-shadow: none;
     transition: all 0.4s ease;
 }
+
 #newAccountButton {
     width: 373;
     height: 44;
@@ -194,24 +198,30 @@ body {
     grid-column: 3 / 10;
     grid-row: 5;
 }
+
 #newAccountButton a {
     color: #010101;
 }
+
 #newAccountButton:hover {
     font-weight: 500;
 }
-.subHeading{
+
+.subHeading {
     font-size: 20px;
     font-weight: 500;
     color: #010101;
 }
-.explanation{
+
+.explanation {
     color: #c7c7c7;
-    font-size: 14px;
+    font-size: 12px;
 }
-.explanation:hover{
+
+.explanation:hover {
     color: #9d9d9d;
 }
+
 #registrationBox {
     box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
     height: 400px;
@@ -222,6 +232,7 @@ body {
     grid-column: 1 / 13;
     margin-top: 30px;
 }
+
 #registrationForm {
     height: inherit;
     width: inherit;
@@ -231,62 +242,75 @@ body {
     row-gap: 25px;
     column-gap: 10px;
 }
+
 #createAnAccount {
     display: block;
     width: 373;
     height: 44;
     border-radius: 10px;
+    border: none;
     font-size: 16px;
     color: #ffffff;
     background-color: #1E1E1E;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     grid-column: 4 / 10;
     grid-row: 6;
 }
+
 #createAnAccount:hover {
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
     box-shadow: 5px 5px #404040;
 }
+
 #createAnAccount:active {
     transform: translateX(10px);
     transform: translateY(5px);
     box-shadow: none;
     transition: all 0.4s ease;
 }
-#personalData{
+
+#personalData {
     grid-column: 1 / 6;
     grid-row: 1;
 }
-#surname{
+
+#surname {
     grid-column: 1 / 6;
     grid-row: 2;
 }
-#name{
+
+#name {
     grid-column: 1 / 6;
     grid-row: 3;
 }
-#patronymic{
+
+#patronymic {
     grid-column: 1 / 6;
     grid-row: 4;
 }
-#contactInformation{
+
+#contactInformation {
     grid-column: 8 / 13;
     grid-row: 1;
 }
-#tel{
+
+#tel {
     grid-column: 8 / 13;
     grid-row: 2;
 }
-#email{
+
+#email {
     grid-column: 8 / 13;
     grid-row: 3;
 }
-#emailExplanation{
+
+#emailExplanation {
     grid-column: 8 / 13;
     grid-row: 4;
     margin-top: -15px;
     margin-left: 15px;
 }
+
 .footer {
     display: grid;
     grid-gap: 20px;
