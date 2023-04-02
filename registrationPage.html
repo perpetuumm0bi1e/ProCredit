@@ -1,63 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Регистрация | ProCredit</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <div class="header">
-        <a href="mainPage.html" id="logo">Pro Credit</a>
-        <a href="applicationsPage.html" id="applications">Заявки</a>
-        <a href="authorizationPage.html" id="profile">Профиль</a>
-      </div>
+        <div class="header">
+            <a href="mainPage.html" id="logo">Pro Credit</a>
+            <a href="applicationsPage.html" id="applications">Заявки</a>
+            <a href="authorizationPage.html" id="profile">Профиль</a>
+        </div>
     </header>
     <main>
-      <div class="registrationPage">
-        <h1 id="registration">Регистрация</h1>
-        <div id="registrationBox">
-          <form id="registrationForm" method="post">
-            <p class="subHeading" id="personalData">Личные данные</p>
-            <input
-              type="text"
-              class="input"
-              id="surname"
-              placeholder="Фамилия" />
-            <input type="text" class="input" id="name" placeholder="Имя" />
-            <input
-              type="text"
-              class="input"
-              id="patronymic"
-              placeholder="Отчество" />
-            <p class="subHeading" id="contactInformation">
-              Контактная инормация
-            </p>
-            <input type="tel" class="input" id="tel" placeholder="+7" />
-            <input type="email" class="input" id="email" placeholder="email" />
-            <p class="explanation" id="emailExplanation">
-              Email используется для входа в аккаунт
-            </p>
-            <input
-              type="submit"
-              id="createAnAccount"
-              value="Создать аккаунт"
-              href="mainPage.html" />
-          </form>
+        <div class="registrationPage">
+            <h1 id="registration">Регистрация</h1>
+            <div id="registrationBox">
+                <form id="registrationForm" method="post">
+                    <div class="inputData">
+                        <div class="personalData">
+                            <p class="subHeading" id="personalDataLabel">Личные данные</p>
+                            <input type="text" class="input" id="surname" placeholder="Фамилия" />
+                            <input type="text" class="input" id="name" placeholder="Имя" />
+                            <input type="text" class="input" id="patronymic" placeholder="Отчество" />
+                        </div>
+                        <div class="contactInformation">
+                            <p class="subHeading" id="contactInformationLabel">
+                                Контактная инормация
+                            </p>
+                            <input type="tel" class="input" id="tel" placeholder="+7" />
+                            <input type="email" class="input" id="email" placeholder="email" />
+                            <p class="explanation" id="emailExplanation">
+                                Email используется для входа в аккаунт
+                            </p>
+                        </div>
+                    </div>
+                    <div class="inputButton">
+                        <input type="submit" id="createAnAccount" value="Создать аккаунт" href="mainPage.html">
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </main>
     <footer class="footer">
-      <p id="author">Disigned by @perpetuumm0bi1e</p>
+        <p id="author">Disigned by @perpetuumm0bi1e</p>
     </footer>
-  </body>
+</body>
+
 </html>
