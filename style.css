@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -150,14 +152,14 @@ body {
 
 .input {
     padding: 12px 15px;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 5px;
     border: 1px solid #c7c7c7;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .input:hover {
-    border: 2px solid #1E1E1E;
+    border: 1px solid #1E1E1E;
     transition: all 0.3s ease-in-out;
 }
 
@@ -167,22 +169,22 @@ input[type="submit"] {
     padding: 12px 15px;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
     background-color: #1E1E1E;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 input[type="submit"]:hover {
     box-shadow: 5px 5px #404040;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 input[type="submit"]:active {
     box-shadow: none;
     transform: translateX(10px);
     transform: translateY(5px);
-    transition: all 0.4s ease;
+    transition: all 0.4s ease-in-out;
 }
 
 #newAccountButton {
@@ -252,14 +254,14 @@ input[type="submit"]:active {
 }
 
 .subHeading {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     color: #010101;
 }
 
 .explanation {
     margin: 0px 0px 0px 15px;
-    height: 45.5px;
+    height: 51px;
     color: #c7c7c7;
     font-size: 12px;
 }
