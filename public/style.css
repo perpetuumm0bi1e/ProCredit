@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -28,7 +27,7 @@ body {
 #logo {
     grid-column: 2 / 5;
     font-family: 'Unbounded', cursive;
-    color: #010101;
+    color: #1E1E1E;
     letter-spacing: 2px;
     font-size: 30px;
 }
@@ -40,7 +39,7 @@ body {
 }
 
 #applications:hover {
-    color: #010101;
+    color: #1E1E1E;
 }
 
 #profile {
@@ -50,7 +49,7 @@ body {
 }
 
 #profile:hover {
-    color: #010101;
+    color: #1E1E1E;
 }
 
 
@@ -152,7 +151,7 @@ body {
 
 .input {
     padding: 12px 15px;
-    font-size: 15px;
+    font-size: 13px;
     border-radius: 5px;
     border: 1px solid #c7c7c7;
     transition: all 0.3s ease-in-out;
@@ -197,7 +196,7 @@ input[type="submit"]:active {
 }
 
 #newAccountButton a {
-    color: #010101;
+    color: #1E1E1E;
 }
 
 #newAccountButton:hover {
@@ -233,14 +232,7 @@ input[type="submit"]:active {
     height: 250px;
 }
 
-.personalData {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 300px;
-}
-
-.contactInformation {
+.inputData div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -254,20 +246,10 @@ input[type="submit"]:active {
 }
 
 .subHeading {
+    margin-bottom: 20px;
     font-size: 18px;
     font-weight: 500;
-    color: #010101;
-}
-
-.explanation {
-    margin: 0px 0px 0px 15px;
-    height: 51px;
-    color: #c7c7c7;
-    font-size: 12px;
-}
-
-.explanation:hover {
-    color: #9d9d9d;
+    color: #1E1E1E;
 }
 
 #createAnAccount {
