@@ -11,29 +11,55 @@ db.serialize(() => {
         login TEXT NOT NULL,
         password TEXT NOT NULL 
     )`;
-
     db.run(sql);
 });
-
+class User {
+    constructor(surname, name, patronymic, login, password){
+        this.surname = surname;
+        this.name = name;
+        this.patronymic =patronymic;
+        this.login = login;
+        this.password = password;
+    }
+}
 class Users {
-    static findUser(login) {
-        db.get(`SELECT * FROM users WHERE login = ${login}`, (err) => {
+    static findUser(user) {
+        db.get(`SELECT * FROM users WHERE login = '${user.login}'`, (err, result) => {
             if (err) {
                 console.log('FINDING USER FAILED', err);
+            } else if (result){
+                console.log('User detected');
             }
         });
     }
-    static addUser(surname, name, patronymic, login, password) {
+    static addUser(user) {
         const sql = `INSERT INTO users(surname, name, patronymic, login, password)
         values (?, ?, ?, ?, ?)`;
-        db.run(sql, surname, name, patronymic, login, password, (err) => {
+        db.run(sql, user.surname, user.name, user.patronymic, user.login, user.password, (err) => {
             if (err) {
                 console.log('ADDING USER FAILED', err);
             }
-        })
+        });
+        const sql2 = `SELECT id FROM users WHERE login = '${user.login}'`;
+        db.get(sql2, (err, result) => {
+            if (err) {
+                console.log('CREATING USER TABLE FAILED', err);
+            } else if(result){
+                let userTableName = 'id_' + result.id + '_applications';
+                const sql = `CREATE TABLE IF NOT EXISTS ${userTableName}(
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    type TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    sum TEXT NOT NULL,
+                    dueDate TEXT NOT NULL,
+                    status TEXT NOT NULL 
+                    )`;
+                    db.run(sql);
+            }
+        });
     }
-    static deleteUser(login) {
-        const sql = `DELETE FROM users WHERE login = ${login}`;
+    static deleteUser(user) {
+        const sql = `DELETE FROM users WHERE login = '${user.login}'`;
         db.run(sql, (err) => {
             if (err) {
                 console.log('DELITING USER FAILED', err);
@@ -41,3 +67,8 @@ class Users {
         })
     }
 }
+module.exports = {
+    db: db, 
+    User: User, 
+    Users: Users
+};
