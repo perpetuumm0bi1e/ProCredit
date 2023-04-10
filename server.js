@@ -38,12 +38,13 @@ app.post('/profile', urlencodedParser, function(req, res) {
     if (!req.body){
         return res.sendStatus(400);
     } else {
-        console.log(req.path);
         if(req.body.passwordFirst == req.body.passwordSecond){
+            let phoneNumber = req.body.phone.split('+');
             let newUser = new dbModule.User(
                 req.body.surname, 
                 req.body.name, 
                 req.body.patronymic, 
+                phoneNumber[1],
                 req.body.login,
                 req.body.passwordFirst);
 

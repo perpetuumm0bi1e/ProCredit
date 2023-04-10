@@ -8,16 +8,18 @@ db.serialize(() => {
         surname TEXT NOT NULL,
         name TEXT NOT NULL,
         patronymic TEXT NOT NULL,
+        phone TEXT NOT NULL,
         login TEXT NOT NULL,
         password TEXT NOT NULL 
     )`;
     db.run(sql);
 });
 class User {
-    constructor(surname, name, patronymic, login, password){
+    constructor(surname, name, patronymic, phone, login, password){
         this.surname = surname;
         this.name = name;
         this.patronymic =patronymic;
+        this.phone = phone;
         this.login = login;
         this.password = password;
     }
@@ -33,9 +35,9 @@ class Users {
         });
     }
     static addUser(user) {
-        const sql = `INSERT INTO users(surname, name, patronymic, login, password)
-        values (?, ?, ?, ?, ?)`;
-        db.run(sql, user.surname, user.name, user.patronymic, user.login, user.password, (err) => {
+        const sql = `INSERT INTO users(surname, name, patronymic, phone, login, password)
+        values (?, ?, ?, ?, ?, ?)`;
+        db.run(sql, user.surname, user.name, user.patronymic, user.phone, user.login, user.password, (err) => {
             if (err) {
                 console.log('ADDING USER FAILED', err);
             }
