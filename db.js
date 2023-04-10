@@ -25,6 +25,21 @@ class User {
     }
 }
 class Users {
+    static authenticateUser(login, password) {
+        db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER FAILED', err);
+            } else if (result){
+                if(result.password == password){
+                    console.log('Passwords matched');
+                    return result;
+                } else if (result.password != password){
+                    console.log('Incorrect password');
+                    return null;
+                }
+            }
+        });
+    }
     static findUser(user) {
         db.get(`SELECT * FROM users WHERE login = '${user.login}'`, (err, result) => {
             if (err) {
@@ -51,9 +66,8 @@ class Users {
                 const sql = `CREATE TABLE IF NOT EXISTS ${userTableName}(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     type TEXT NOT NULL,
-                    name TEXT NOT NULL,
                     sum TEXT NOT NULL,
-                    dueDate TEXT NOT NULL,
+                    dueDate DATE NOT NULL,
                     status TEXT NOT NULL 
                     )`;
                     db.run(sql);
@@ -69,8 +83,71 @@ class Users {
         })
     }
 }
+
+class Application {
+    constructor(id, type, sum, dueDate, status){
+        this.id = id;
+        this.type = type;
+        this.sum = sum;
+        this.dueDate = dueDate;
+        this.status = status;
+    }
+}
+
+class Applications {
+    static findApplication(user) {
+        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
+            } else if(result){
+                let userTableName = 'id_' + result.id + '_applications';
+                db.get(`SELECT * FROM ${userTableName}`, (err, result) => {
+                    if (err) {
+                        console.log('FINDING APPLICATIONS FAILED', err);
+                    } else if (result){
+                        console.log('Table detected');
+                        return result;
+                    }
+                });
+            }
+        });
+    }
+    static addApplication(user, application) {
+        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
+            } else if(result){
+                let userTableName = 'id_' + result.id + '_applications';
+                const sql = `INSERT INTO ${userTableName}(type, sum, dueDate, status) values (?, ?, ?, ?)`;
+                db.run(sql, application.type, application.sum, application.dueDate, 'На рассмотрении', (err) => {
+                    if (err) {
+                        console.log('ADDING APPLICATION FAILED', err);
+                    }
+                });
+            }
+        });
+    }
+    static deleteUser(user, application) {
+        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
+            } else if(result){
+                let userTableName = 'id_' + result.id + '_applications';
+                const sql = `DELETE FROM ${userTableName} WHERE id = '${application.id}'`;
+                db.run(sql, (err) => {
+                    if (err) {
+                        console.log('DELITING APPLICATION FAILED', err);
+                    }
+                });
+            }
+        });
+    }
+}
+
 module.exports = {
     db: db, 
     User: User, 
-    Users: Users
+    Users: Users,
+    Application: Application,
+    Applications: Applications
 };

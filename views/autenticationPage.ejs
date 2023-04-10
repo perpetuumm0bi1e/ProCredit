@@ -12,27 +12,33 @@
       href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
-    <title>Авторизация | ProCredit</title>
+    <title>Вход | ProCredit</title>
   </head>
 
   <body>
     <%- include('blocks/header.ejs') %>
     <main>
-      <div class="authoriaztionPage">
-        <h1 id="authoriaztion">Авторизация</h1>
-        <div id="authorizationBox">
-          <form id="authorizationForm" method="post">
-            <input type="text" class="input" id="login" placeholder="Логин" />
+      <div class="autenticationPage">
+        <h1 id="autentication">Вход</h1>
+        <div id="autenticationBox">
+          <form id="autenticationForm" method="post" action="/profile">
+            <input
+              type="text"
+              class="input"
+              id="autenticationLogin"
+              name="autenticationLogin"
+              placeholder="Логин" />
             <input
               type="password"
               class="input"
               id="password"
+              name="autenticationPassword"
               placeholder="Пароль" />
             <input
+              class="buttonType1"
               type="submit"
               id="submit"
-              value="Войти"
-              href="mainPage.html" />
+              value="Войти" />
             <button id="newAccountButton">
               <a href="/registration">Зарегистрироваться</a>
             </button>

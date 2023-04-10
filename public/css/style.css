@@ -85,7 +85,7 @@ body {
 /*стиль страниц*/
 
 .mainPage,
-.authoriaztionPage,
+.autenticationPage,
 .registrationPage,
 .profilePage,
 .applicationsPage {
@@ -112,7 +112,7 @@ body {
 }
 
 #services,
-#authoriaztion,
+#autentication,
 #registration,
 #profile,
 #applications {
@@ -164,7 +164,7 @@ body {
 
 /*стиль страницы авторизации*/
 
-#authorizationBox {
+#autenticationBox {
     grid-column: 3 / 11;
     padding: 60px 120px;
     height: 300px;
@@ -174,7 +174,7 @@ body {
     background-color: #ffffff;
 }
 
-#authorizationForm {
+#autenticationForm {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -184,7 +184,7 @@ body {
 
 .input {
     padding: 12px 15px;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 5px;
     border: 1px solid #c7c7c7;
     transition: all 0.3s ease-in-out;
@@ -322,10 +322,10 @@ body {
     height: 340px;
 }
 .userData p:first-child{
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .dataCategory{
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 17px;
     color: var(--dark-gray);
 }
@@ -337,17 +337,28 @@ body {
 .profileBoxButtons{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
+#logOut{
+    margin: 0;
+    width: 160px;
+    text-align: center;
+    color: var(--gray);
+    background: none;
+}
+#logOut:hover{
+    font-size: 16.5px;
+    box-shadow: none;
+}
 #editPersonalInformation{
     margin: 0;
-    width: 230px;
+    width: 200px;
 }
 #deleteAnAccount{
     margin: 0;
-    width: 250px;
+    width: 160px;
     text-align: center;
     color: var(--error-red);
     background: none;
@@ -408,12 +419,106 @@ tr{
     border: none;
     border-radius: 100px;
     font-size: 30px;
-    font-weight: 500;
     color: var(--dark-gray);
     background-color: var(--light-gray);
     transition: all 0.35s ease-in-out;
 }
 .addButton:hover{
     background-color: var(--light-gray-2);
+    transition: all 0.35s ease-in-out;
+}
+
+/*стиль модального окна*/
+.modal-addApplication{
+    pointer-events: none;
+    opacity: 0;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity .3s, background-color .5s;
+}
+.is-open{
+    opacity: 1;
+    pointer-events: all;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modalContent{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 500px;
+    padding: 60px 80px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+.closeModalButtonContainer{
+    width: inherit;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.closeModalButton{
+    justify-self: flex-start;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--dark-gray);
+    background-color: var(--light-gray);
+    opacity: 0.9;
+    transition: all 0.35s ease-in-out;
+}
+.closeModalButton:hover{
+    background-color: var(--light-gray-2);
+    transition: all 0.35s ease-in-out;
+}
+#addApplicationHeading{
+    margin-bottom: 60px;
+}
+#applicationType{
+    font-size: 14px;
+    color: var(--dark-gray);
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #c7c7c7;
+    transition: all 0.3s ease-in-out;
+}
+
+#applicationType:hover {
+    border: 1px solid var(--dark-gray);
+    transition: all 0.3s ease-in-out;
+}
+#applicationForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    width: inherit;
+}
+.applicationTypeOption{
+    padding: 12px;
+    font-size: 14px;
+    color: var(--dark-gray);
+    transition: all 0.35s ease-in-out;
+}
+.applicationTypeOption:hover{
+    background: rgba(235, 235, 235, 1);
     transition: all 0.35s ease-in-out;
 }

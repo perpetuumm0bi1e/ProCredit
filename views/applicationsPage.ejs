@@ -16,7 +16,83 @@
   </head>
   <body>
     <%- include('blocks/header.ejs') %>
-    <main class="applicationsPage"></main>
+    <main class="applicationsPage">
+      <div class="modal-addApplication">
+        <div class="modalContent">
+          <div class="closeModalButtonContainer">
+            <button class="closeModalButton">x</button>
+          </div>
+          <p class="subHeading" id="addApplicationHeading">
+            <b>Создание заявки</b>
+          </p>
+          <div class="creatingApplication">
+            <form id="applicationForm" method="post">
+              <select id="applicationType" name="applicationType">
+                <option class="applicationTypeOption">Кредит наличными</option>
+                <option class="applicationTypeOption">
+                  Оформление кредитной карты
+                </option>
+                <option class="applicationTypeOption">
+                  Кредит на образование
+                </option>
+                <option class="applicationTypeOption">Ипотека</option>
+                <option class="applicationTypeOption">Автокредит</option>
+                <option class="applicationTypeOption">
+                  Кредит на открытие бизнеса
+                </option>
+              </select>
+              <input
+                type="number"
+                class="input"
+                id="sum"
+                name="sum"
+                placeholder="Сумма" />
+              <input
+                type="date"
+                class="input"
+                id="dueDate"
+                name="dueDate"
+                placeholder="Срок" />
+              <input
+                class="buttonType1"
+                type="submit"
+                id="createAnApplication"
+                value="Отправить"
+                href="applicationsPage.html" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <h1 id="applications">Заявки</h1>
+      <div id="applicationsBox">
+        <table class="applicationsTable">
+          <thead class="tableHeader">
+            <tr>
+              <th>Номер</th>
+              <th>Тип</th>
+              <th>Дата создания</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(applicationsData.length!=0){
+            applicationsData.forEach(function(application) { %>
+            <tr>
+              <td class="tableCell"><% application.id %></td>
+              <td class="tableCell"><% application.type %></td>
+              <td class="tableCell"><% application.dueDate %></td>
+              <td class="tableCell"><% application.status %></td>
+            </tr>
+            <% })} else { %>
+            <tr>
+              <td colspan="4">Заявки не найдены</td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <button class="addButton" data-trigger>+</button>
+      </div>
+    </main>
     <footer class="footer">
       <p id="author">Disigned by @perpetuumm0bi1e</p>
     </footer>
