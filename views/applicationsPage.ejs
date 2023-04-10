@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Заявки | ProCredit</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <%- include('blocks/header.ejs') %>
-    <main class="applicationsPage">
-      <div class="modal-addApplication">
-        <div class="modalContent">
-          <div class="closeModalButtonContainer">
-            <button class="closeModalButton">x</button>
-          </div>
-          <p class="subHeading" id="addApplicationHeading">
-            <b>Создание заявки</b>
-          </p>
-          <div class="creatingApplication">
-            <form id="applicationForm" method="post">
-              <select id="applicationType" name="applicationType">
+        <main class="applicationsPage">
+            <div class="modal-addApplication">
+                <div class="modalContent">
+                    <div class="closeModalButtonContainer">
+                        <button class="closeModalButton">x</button>
+                    </div>
+                    <p class="subHeading" id="addApplicationHeading">
+                        <b>Создание заявки</b>
+                    </p>
+                    <div class="creatingApplication">
+                        <form id="applicationForm" method="post">
+                            <select id="applicationType" name="applicationType">
                 <option class="applicationTypeOption">Кредит наличными</option>
                 <option class="applicationTypeOption">
                   Оформление кредитной карты
@@ -41,60 +39,55 @@
                   Кредит на открытие бизнеса
                 </option>
               </select>
-              <input
-                type="number"
-                class="input"
-                id="sum"
-                name="sum"
-                placeholder="Сумма" />
-              <input
-                type="date"
-                class="input"
-                id="dueDate"
-                name="dueDate"
-                placeholder="Срок" />
-              <input
-                class="buttonType1"
-                type="submit"
-                id="createAnApplication"
-                value="Отправить"
-                href="applicationsPage.html" />
-            </form>
-          </div>
-        </div>
-      </div>
-      <h1 id="applications">Заявки</h1>
-      <div id="applicationsBox">
-        <table class="applicationsTable">
-          <thead class="tableHeader">
-            <tr>
-              <th>Номер</th>
-              <th>Тип</th>
-              <th>Дата создания</th>
-              <th>Статус</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% if(applicationsData.length!=0){
+                            <input type="number" class="input" id="sum" name="sum" placeholder="Сумма" />
+                            <input type="date" class="input" id="dueDate" name="dueDate" placeholder="Срок" />
+                            <input class="buttonType1" type="submit" id="createAnApplication" value="Отправить" href="applicationsPage.html" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <h1 id="applications">Заявки</h1>
+            <div id="applicationsBox">
+                <table class="applicationsTable">
+                    <thead class="tableHeader">
+                        <tr>
+                            <th>Номер</th>
+                            <th>Тип</th>
+                            <th>Дата создания</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(applicationsData.length!=0){
             applicationsData.forEach(function(application) { %>
-            <tr>
-              <td class="tableCell"><% application.id %></td>
-              <td class="tableCell"><% application.type %></td>
-              <td class="tableCell"><% application.dueDate %></td>
-              <td class="tableCell"><% application.status %></td>
-            </tr>
-            <% })} else { %>
-            <tr>
-              <td colspan="4">Заявки не найдены</td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-        <button class="addButton" data-trigger>+</button>
-      </div>
-    </main>
-    <footer class="footer">
-      <p id="author">Disigned by @perpetuumm0bi1e</p>
-    </footer>
-  </body>
+                            <tr>
+                                <td class="tableCell">
+                                    <% application.id %>
+                                </td>
+                                <td class="tableCell">
+                                    <% application.type %>
+                                </td>
+                                <td class="tableCell">
+                                    <% application.dueDate %>
+                                </td>
+                                <td class="tableCell">
+                                    <% application.status %>
+                                </td>
+                            </tr>
+                            <% })} else { %>
+                                <tr>
+                                    <td colspan="4">Заявки не найдены</td>
+                                </tr>
+                                <% } %>
+                    </tbody>
+                </table>
+                <button class="addButton" data-trigger>+</button>
+            </div>
+        </main>
+        <footer class="footer">
+            <p id="author">Disigned by @perpetuumm0bi1e</p>
+            <p id="author">2023</p>
+        </footer>
+</body>
+
 </html>
