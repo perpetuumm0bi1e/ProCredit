@@ -18,11 +18,46 @@
     <header>
       <div class="header">
         <a href="mainPage.html" id="logo">Pro Credit</a>
-        <a href="applicationsPage.html" id="applications">Заявки</a>
-        <a href="authorizationPage.html" id="profile">Профиль</a>
+        <a href="applicationsPage.html" id="applicationsLink">Заявки</a>
+        <a href="authorizationPage.html" id="profileLink">Профиль</a>
       </div>
     </header>
-    <main class="profilepagePage"></main>
+    <main class="profilePage">
+      <h1 id="profile">Профиль</h1>
+      <div id="profileBox">
+        <div class="userData">
+          <div class="profilePersonalData">
+            <p class="subHeading" id="contactInformationLabel">Личные данные</p>
+            <p id="fio" class="dataCategory">ФИО</p>
+            <p id="fio" class="description">Фамилия Имя Отчество</p>
+            <p id="phoneNumber" class="dataCategory">Контактный номер</p>
+            <p id="phoneNumber" class="description">+79012345678</p>
+          </div>
+          <div class="profileLoginData">
+            <p class="subHeading" id="contactInformationLabel">
+              Данные для входа
+            </p>
+            <p id="profileLogin" class="dataCategory">Логин</p>
+            <p id="profileLogin" class="description">login</p>
+            <p id="profilePassword" class="dataCategory">Пароль</p>
+            <input
+              id="profilePassword"
+              class="input"
+              type="password"
+              value="qwerty"
+              readonly />
+          </div>
+        </div>
+        <div class="profileBoxButtons">
+          <button class="buttonType1" id="editPersonalInformation">
+            Изменить
+          </button>
+          <button class="buttonType1" id="deleteAnAccount">
+            Удалить аккаунт
+          </button>
+        </div>
+      </div>
+    </main>
     <footer class="footer">
       <p id="author">Disigned by @perpetuumm0bi1e</p>
     </footer>

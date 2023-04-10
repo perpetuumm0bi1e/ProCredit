@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-* {
+:root {
+    --dark-gray: #282828;
+    --gray: #636363;
+    --light-gray: #ebebeb;
+    --light-gray-2: #e1e1e1;
+    --error-red: #D01919;
+  }
+  * {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -11,6 +18,28 @@ body {
     background: #F6F7F8;
 }
 
+.buttonType1{
+    display: block;
+    margin: 60px 0px -10px;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: var(--dark-gray);
+    transition: all 0.4s ease-in-out;
+}
+.buttonType1:hover{
+    box-shadow: 5px 5px var(--gray);
+    transition: all 0.4s ease-in-out;
+}
+
+.buttonType1:active{
+    box-shadow: none;
+    transform: translateX(10px);
+    transform: translateY(5px);
+    transition: all 0.4s ease-in-out;
+}
 
 /*стиль хедера*/
 
@@ -27,29 +56,29 @@ body {
 #logo {
     grid-column: 2 / 5;
     font-family: 'Unbounded', cursive;
-    color: #1E1E1E;
+    color: var(--dark-gray);
     letter-spacing: 2px;
     font-size: 30px;
 }
 
-#applications {
+#applicationsLink {
     grid-column: 9;
     font-size: 16px;
-    color: #7C7C7C;
+    color: var(--gray);
 }
 
-#applications:hover {
-    color: #1E1E1E;
+#applicationsLink:hover {
+    color: var(--dark-gray);
 }
 
-#profile {
+#profileLink {
     grid-column: 10;
     font-size: 16px;
-    color: #7C7C7C;
+    color: var(--gray);
 }
 
-#profile:hover {
-    color: #1E1E1E;
+#profileLink:hover {
+    color: var(--dark-gray);
 }
 
 
@@ -57,7 +86,9 @@ body {
 
 .mainPage,
 .authoriaztionPage,
-.registrationPage {
+.registrationPage,
+.profilePage,
+.applicationsPage {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
@@ -82,10 +113,12 @@ body {
 
 #services,
 #authoriaztion,
-#registration {
+#registration,
+#profile,
+#applications {
     grid-column: 5 / 9;
     margin-bottom: 100px;
-    color: #010101;
+    color: var(--dark-gray);
     font-size: 40px;
     text-align: center;
 }
@@ -158,45 +191,22 @@ body {
 }
 
 .input:hover {
-    border: 1px solid #1E1E1E;
+    border: 1px solid var(--dark-gray);
     transition: all 0.3s ease-in-out;
 }
 
-input[type="submit"] {
-    display: block;
-    margin: 60px 0px -10px;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #1E1E1E;
-    transition: all 0.4s ease-in-out;
-}
-
-input[type="submit"]:hover {
-    box-shadow: 5px 5px #404040;
-    transition: all 0.4s ease-in-out;
-}
-
-input[type="submit"]:active {
-    box-shadow: none;
-    transform: translateX(10px);
-    transform: translateY(5px);
-    transition: all 0.4s ease-in-out;
-}
 
 #newAccountButton {
     margin-bottom: -20px;
     padding: 12px 15px;
     border: none;
     font-size: 16px;
-    color: #1E1E1E;
+    color: var(--dark-gray);
     background-color: #ffffff;
 }
 
 #newAccountButton a {
-    color: #1E1E1E;
+    color: var(--dark-gray);
 }
 
 #newAccountButton:hover {
@@ -251,9 +261,9 @@ input[type="submit"]:active {
 
 .subHeading {
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 500;
-    color: #1E1E1E;
+    color: #282828;
 }
 
 #createAnAccount {
@@ -277,4 +287,133 @@ input[type="submit"]:active {
     letter-spacing: 2px;
     font-size: 14px;
     color: #F6F7F8;
+}
+
+/*конец стиля страницы регистрации*/
+
+
+/*стиль страницы профиля*/
+
+#profileBox {
+    grid-column: 3 / 11;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 100px;
+    height: 450px;
+    width: 600px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    background-color: #ffffff;
+}
+.userData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+.userData div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 230px;
+    height: 340px;
+}
+.userData p:first-child{
+    margin-bottom: 30px;
+}
+.dataCategory{
+    margin-top: 30px;
+    font-size: 17px;
+    color: var(--dark-gray);
+}
+.description{
+    font-size: 15px;
+    margin-top:-5px;
+    color: var(--gray);
+}
+.profileBoxButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#editPersonalInformation{
+    margin: 0;
+    width: 230px;
+}
+#deleteAnAccount{
+    margin: 0;
+    width: 250px;
+    text-align: center;
+    color: var(--error-red);
+    background: none;
+}
+#deleteAnAccount:hover{
+    font-size: 16.5px;
+    box-shadow: none;
+}
+
+/*конец стиля страницы профиля*/
+
+
+/*стиль страницы с заявками*/
+
+#applicationsBox {
+    grid-column: 3 / 11;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 100px;
+    height: 450px;
+    width: 800px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 50px rgba(1, 1, 1, 0.05);
+    background-color: white;
+}
+.applicationsTable{
+    max-height: 400px;
+    border: 2px solid var(--gray);
+    border: 0px;
+    border-spacing: 25px;
+    border-collapse: collapse;
+}
+td, th{
+    padding: 15px 20px;
+    text-align: left;
+    vertical-align: baseline;
+}
+td{
+    font-size: 16px;
+    color: var(--gray);
+    border-radius: 7px;
+}
+th{
+    font-size: 17px;
+    color: var(--dark-gray);
+}
+tr{
+    border-radius: 15px;
+    transition: all 0.35s ease-in-out;
+}
+.addButton{
+    position: relative;
+    bottom: 0px;
+    left: 750px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 100px;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--dark-gray);
+    background-color: var(--light-gray);
+    transition: all 0.35s ease-in-out;
+}
+.addButton:hover{
+    background-color: var(--light-gray-2);
+    transition: all 0.35s ease-in-out;
 }
