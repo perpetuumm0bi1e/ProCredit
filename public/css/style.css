@@ -360,7 +360,7 @@ body {
     flex-wrap: wrap;
 }
 
-#logOut {
+#log-out {
     margin: 0;
     width: 160px;
     text-align: center;
@@ -368,17 +368,17 @@ body {
     background: none;
 }
 
-#logOut:hover {
+#log-out:hover {
     font-size: 16.5px;
     box-shadow: none;
 }
 
-#editPersonalInformation {
+#edit-personal-information {
     margin: 0;
     width: 200px;
 }
 
-#deleteAnAccount {
+#delete-an-account {
     margin: 0;
     width: 160px;
     text-align: center;
@@ -386,11 +386,14 @@ body {
     background: none;
 }
 
-#deleteAnAccount:hover {
+#delete-an-account:hover {
     font-size: 16.5px;
     box-shadow: none;
 }
 
+.unchanged{
+    border: none;
+}
 
 /*конец стиля страницы профиля*/
 

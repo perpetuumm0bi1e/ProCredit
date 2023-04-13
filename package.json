@@ -16,6 +16,7 @@
     "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
+    "npm": "^9.6.4",
     "sqlite3": "^5.1.6"
   }
 }

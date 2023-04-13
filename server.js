@@ -103,4 +103,9 @@ console.log('Авторизация прошла успешно');
         */
     }
 });
+
+//обработка данных сос траницы профиля
+app.post('/main', urlencodedParser, function(req, res) {
+    
+})
 app.listen(3000);

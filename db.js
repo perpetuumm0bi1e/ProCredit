@@ -26,18 +26,20 @@ class User {
 }
 class Users {
     static authenticateUser(login, password) {
-        db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
-            if (err) {
-                console.log('FINDING USER FAILED', err);
-            } else if (result){
-                if(result.password == password){
-                    console.log('Passwords matched');
-                    return result;
-                } else if (result.password != password){
-                    console.log('Incorrect password');
-                    return null;
+        return new Promise((res, rej) => {
+            db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
+                if (err) {
+                    console.log('FINDING USER FAILED', err);
+                } else if (result){
+                    if(result.password == password){
+                        console.log('Passwords matched');
+                        res(result);
+                    } else if (result.password != password){
+                        console.log('Incorrect password');
+                         rej('Incorrect password');
+                    }
                 }
-            }
+            });
         });
     }
     static findUser(user) {

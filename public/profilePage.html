@@ -25,38 +25,39 @@
     <main class="profilePage">
       <h1 id="profile">Профиль</h1>
       <div id="profileBox">
+        <form id="profile-box" method="post" action="'/main">
         <div class="userData">
           <div class="profilePersonalData">
             <p class="subHeading" id="contactInformationLabel">Личные данные</p>
             <p id="fio" class="dataCategory">ФИО</p>
-            <p id="fio" class="description">Фамилия Имя Отчество</p>
+            <input class="input profile-input unchanged" type="text" id="edited-fio" name="edited-fio" value="Фамилия Имя отчество" readonly>
             <p id="phoneNumber" class="dataCategory">Контактный номер</p>
-            <p id="phoneNumber" class="description">+79012345678</p>
+            <input class="description profile-input unchanged" type="text" id="edited-phone-number" name="edited-phone-number" value="79012345678" readonly>
           </div>
           <div class="profileLoginData">
             <p class="subHeading" id="contactInformationLabel">
               Данные для входа
             </p>
             <p id="profileLogin" class="dataCategory">Логин</p>
-            <p id="profileLogin" class="description">login</p>
+            <input class="input profile-input unchanged" type="text" id="edited-login" name="edited-login" value="login" readonly>
             <p id="profilePassword" class="dataCategory">Пароль</p>
             <input
-              id="profilePassword"
-              class="input"
+            class="input profile-input unchanged"
+              id="edited-password"
+              name="edited-password"
               type="password"
               value="qwerty"
               readonly />
           </div>
         </div>
         <div class="profileBoxButtons">
-          <button class="buttonType1" id="logOut">Выйти</button>
-          <button class="buttonType1" id="editPersonalInformation">
+          <input type="submit" class="buttonType1" id="log-out" name="log-out" value="Выйти">
+          <button class="buttonType1" id="edit-personal-information">
             Изменить
           </button>
-          <button class="buttonType1" id="deleteAnAccount">
-            Удалить аккаунт
-          </button>
+          <input type="submit" class="buttonType1" id="delete-an-account" name="delete-an-account" value="Удалить аккаунт">
         </div>
+      </form>
       </div>
     </main>
     <footer class="footer">

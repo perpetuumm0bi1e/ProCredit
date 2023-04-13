@@ -19,7 +19,7 @@ var pageYOffset = 0;
 
 var openModal = function() {
     pageYOffset = window.pageYOffset;
-    modal.classList.add('is-open');
+    modal.classList.add('is-opesssn');
     isModalOpen = true;
 }
 
@@ -43,3 +43,30 @@ document.addEventListener('scroll', onScroll);
 
 closeModalButton.addEventListener('click', closeModal);
 })();
+
+let editButton = document.querySelector('#edit-personal-information');
+let editButtonClickCounter = 0;
+
+let editedFIO = document.getElementById('edited-fio');
+let editedPhoneNumber = document.getElementById('edited-phone-number');
+let editedLogin = document.getElementById('edited-login');
+let editedPassword = document.getElementById('edited-password');
+
+let editedData = document.getElementsByClassName('profile-input');
+
+editButton.addEventListener('click', function () {
+    editButtonClickCounter++;
+    if(editButtonClickCounter % 2 != 0){
+        editedData.forEach(element => {
+            element.readOnly = false;
+            element.classList.remove('unchanged');
+        });
+        editButton.value = 'Сохранить';
+    } else if (editButtonClickCounter % 2 == 0){
+        editedData.forEach(element => {
+        element.readOnly = true;
+        element.classList.add('unchanged');
+    });
+        editButton.value = 'Изменить';
+    }
+});
