@@ -1,3 +1,4 @@
+Vorname Nachname, [4/13/23 6:10 PM]
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,20 +16,20 @@
 <body>
     <%- include('blocks/header.ejs') %>
         <main>
-            <div class="registrationPage">
+            <div class="registration-page">
                 <h1 id="registration">Регистрация</h1>
-                <div id="registrationBox">
-                    <form id="registrationForm" method="post" action="/autentication">
-                        <div class="inputData">
-                            <div class="personalData">
-                                <p class="subHeading" id="personalDataLabel">Личные данные</p>
+                <div id="registration-box">
+                    <form id="registration-form" method="post" action="/registered">
+                        <div class="input-data">
+                            <div class="personal-data">
+                                <p class="sub-heading" id="personal-data-label">Личные данные</p>
                                 <input type="text" class="input" id="surname" name="surname" placeholder="Фамилия" />
                                 <input type="text" class="input" id="name" name="name" placeholder="Имя" />
                                 <input type="text" class="input" id="patronymic" name="patronymic" placeholder="Отчество" />
                                 <input type="tel" class="input" id="phone" name="phone" placeholder="+7" />
                             </div>
-                            <div class="loginData">
-                                <p class="subHeading" id="contactInformationLabel">
+                            <div class="login-data">
+                                <p class="sub-heading" id="contact-information-label">
                                     Данные для входа
                                 </p>
                                 <input type="text" class="input" id="login" name="login" placeholder="Логин" />
@@ -36,8 +37,8 @@
                                 <input type="password" class="input" id="passwordSecond" name="passwordSecond" placeholder="Повторите пароль" />
                             </div>
                         </div>
-                        <div class="inputButton">
-                            <input class="buttonType1" type="submit" id="createAnAccount" value="Создать аккаунт" />
+                        <div class="input-button">
+                            <input class="button-type-1" type="submit" id="create-an-account" value="Создать аккаунт" />
                         </div>
                     </form>
                 </div>

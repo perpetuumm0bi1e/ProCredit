@@ -15,14 +15,14 @@
 <body>
     <%- include('blocks/header.ejs') %>
         <main>
-            <div class="autenticationPage">
+            <div class="autentication-page">
                 <h1 id="autentication">Вход</h1>
-                <div id="autenticationBox">
-                    <form id="autenticationForm" method="post" action="/profile">
-                        <input type="text" class="input" id="autenticationLogin" name="autenticationLogin" placeholder="Логин" />
+                <div id="autentication-box">
+                    <form id="autentication-form" method="post" action="/autenticated">
+                        <input type="text" class="input" id="login" name="autenticationLogin" placeholder="Логин" />
                         <input type="password" class="input" id="password" name="autenticationPassword" placeholder="Пароль" />
-                        <input class="buttonType1" type="submit" id="submit" value="Войти" />
-                        <button id="newAccountButton">
+                        <input class="button-type-1" type="submit" id="submit" value="Войти" />
+                        <button id="new-account-button">
               <a href="/registration">Зарегистрироваться</a>
             </button>
                     </form>

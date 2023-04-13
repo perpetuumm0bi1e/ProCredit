@@ -15,10 +15,10 @@ db.serialize(() => {
     db.run(sql);
 });
 class User {
-    constructor(surname, name, patronymic, phone, login, password){
+    constructor(surname, name, patronymic, phone, login, password) {
         this.surname = surname;
         this.name = name;
-        this.patronymic =patronymic;
+        this.patronymic = patronymic;
         this.phone = phone;
         this.login = login;
         this.password = password;
@@ -30,14 +30,15 @@ class Users {
             db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
                 if (err) {
                     console.log('FINDING USER FAILED', err);
-                } else if (result){
-                    if(result.password == password){
+                } else if (result) {
+                    if (result.password == password) {
                         console.log('Passwords matched');
-                        let thisUser = new User(result.id, result.surname, result.name, result.patronymic, result.phone, result.login, result.password);                        console.log(thisUser);
-                         res(result.login);
-                    } else if (result.password != password){
+                        let thisUser = new User(result.id, result.surname, result.name, result.patronymic, result.phone, result.login, result.password);
+                        console.log(thisUser);
+                        res(result.login);
+                    } else if (result.password != password) {
                         console.log('Incorrect password');
-                         rej('Incorrect password');
+                        rej('Incorrect password');
                     }
                 }
             });
@@ -49,7 +50,7 @@ class Users {
                 if (err) {
                     console.log('FINDING USER FAILED', err);
                     rej('User does not exist');
-                } else if (result){
+                } else if (result) {
                     console.log('User detected');
                     res(result);
                 }
@@ -68,7 +69,7 @@ class Users {
         db.get(sql2, (err, result) => {
             if (err) {
                 console.log('CREATING USER TABLE FAILED', err);
-            } else if(result){
+            } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 const sql = `CREATE TABLE IF NOT EXISTS ${userTableName}(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -77,7 +78,7 @@ class Users {
                     dueDate DATE NOT NULL,
                     status TEXT NOT NULL 
                     )`;
-                    db.run(sql);
+                db.run(sql);
             }
         });
     }
@@ -92,7 +93,7 @@ class Users {
 }
 
 class Application {
-    constructor(id, type, sum, dueDate, status){
+    constructor(id, type, sum, dueDate, status) {
         this.id = id;
         this.type = type;
         this.sum = sum;
@@ -106,12 +107,12 @@ class Applications {
         db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
-            } else if(result){
+            } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 db.get(`SELECT * FROM ${userTableName}`, (err, result) => {
                     if (err) {
                         console.log('FINDING APPLICATIONS FAILED', err);
-                    } else if (result){
+                    } else if (result) {
                         console.log('Table detected');
                         return result;
                     }
@@ -123,7 +124,7 @@ class Applications {
         db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
-            } else if(result){
+            } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 const sql = `INSERT INTO ${userTableName}(type, sum, dueDate, status) values (?, ?, ?, ?)`;
                 db.run(sql, application.type, application.sum, application.dueDate, 'На рассмотрении', (err) => {
@@ -138,7 +139,7 @@ class Applications {
         db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
-            } else if(result){
+            } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 const sql = `DELETE FROM ${userTableName} WHERE id = '${application.id}'`;
                 db.run(sql, (err) => {
@@ -152,8 +153,8 @@ class Applications {
 }
 
 module.exports = {
-    db: db, 
-    User: User, 
+    db: db,
+    User: User,
     Users: Users,
     Application: Application,
     Applications: Applications

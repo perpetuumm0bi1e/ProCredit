@@ -16,46 +16,46 @@
     <header>
         <div class="header">
             <a href="mainPage.html" id="logo">Pro Credit</a>
-            <a href="applicationsPage.html" id="applicationsLink">Заявки</a>
-            <a href="autenticationPage.html" id="profileLink">Профиль</a>
+            <a href="applicationsPage.html" id="applications-link">Заявки</a>
+            <a href="autenticationPage.html" id="profile-link">Профиль</a>
         </div>
     </header>
-    <main class="applicationsPage">
-        <div class="modal-addApplication">
-            <div class="modalContent">
-                <div class="closeModalButtonContainer">
-                    <button class="closeModalButton">x</button>
+    <main class="applications-page">
+        <div class="modal-add-application">
+            <div class="modal-content">
+                <div class="close-modal-button-container">
+                    <button class="close-modal-button">x</button>
                 </div>
-                <p class="subHeading" id="addApplicationHeading">
+                <p class="sub-heading" id="add-application-heading">
                     <b>Создание заявки</b>
                 </p>
-                <div class="creatingApplication">
-                    <form id="applicationForm" method="post">
-                        <select id="applicationType" name="applicationType">
-                <option class="applicationTypeOption">Кредит наличными</option>
-                <option class="applicationTypeOption">
+                <div class="creating-application">
+                    <form id="application-form" method="post">
+                        <select id="application-type" name="applicationtype">
+                <option class="application-type-option">Кредит наличными</option>
+                <option class="application-type-option">
                   Оформление кредитной карты
                 </option>
-                <option class="applicationTypeOption">
+                <option class="application-type-option">
                   Кредит на образование
                 </option>
-                <option class="applicationTypeOption">Ипотека</option>
-                <option class="applicationTypeOption">Автокредит</option>
-                <option class="applicationTypeOption">
+                <option class="application-type-option">Ипотека</option>
+                <option class="application-type-option">Автокредит</option>
+                <option class="application-type-option">
                   Кредит на открытие бизнеса
                 </option>
               </select>
                         <input type="number" class="input" id="sum" name="sum" placeholder="Сумма" />
-                        <input type="date" class="input" id="dueDate" name="dueDate" placeholder="Срок" />
-                        <input class="buttonType1" type="submit" id="createAnApplication" value="Отправить" href="applicationsPage.html" />
+                        <input type="date" class="input" id="due-date" name="dueDate" placeholder="Срок" />
+                        <input class="button-type-1" type="submit" id="create-an-application" value="Отправить" href="applicationsPage.html" />
                     </form>
                 </div>
             </div>
         </div>
         <h1 id="applications">Заявки</h1>
-        <div id="applicationsBox">
-            <table class="applicationsTable">
-                <thead class="tableHeader">
+        <div id="applications-box">
+            <table class="applications-table">
+                <thead class="table-header">
                     <tr>
                         <th>Номер</th>
                         <th>Тип</th>
@@ -65,20 +65,20 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="tableCell">394872934</td>
-                        <td class="tableCell">Автокредит</td>
-                        <td class="tableCell">27.10.2022</td>
-                        <td class="tableCell">На рассмотрении</td>
+                        <td class="table-cell">394872934</td>
+                        <td class="table-cell">Автокредит</td>
+                        <td class="table-cell">27.10.2022</td>
+                        <td class="table-cell">На рассмотрении</td>
                     </tr>
                     <tr>
-                        <td class="tableCell">39487678</td>
-                        <td class="tableCell">Оформление кредитной карты</td>
-                        <td class="tableCell">07.05.2017</td>
-                        <td class="tableCell">Одобрена</td>
+                        <td class="table-cell">39487678</td>
+                        <td class="table-cell">Оформление кредитной карты</td>
+                        <td class="table-cell">07.05.2017</td>
+                        <td class="table-cell">Одобрена</td>
                     </tr>
                 </tbody>
             </table>
-            <button class="addButton" data-trigger>+</button>
+            <button class="add-button" data-trigger>+</button>
         </div>
     </main>
     <footer class="footer">
