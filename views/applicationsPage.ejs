@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Заявки | ProCredit</title>
-</head>
+  </head>
 
-<body>
-    <%- include('blocks/header.ejs') %>
-        <main class="applications-page">
-            <div class="modal-add-application">
-                <div class="modal-content">
-                    <div class="close-modal-button-container">
-                        <button class="close-modal-button">x</button>
-                    </div>
-                    <p class="sub-heading" id="add-application-heading">
-                        <b>Создание заявки</b>
-                    </p>
-                    <div class="creating-application">
-                        <form id="application-form" method="post">
-                            <select id="application-type" name="applicationtype">
-                <option class="application-type-option">Кредит наличными</option>
-                <option class="application-type-option">
-                  Оформление кредитной карты
-                </option>
-                <option class="application-type-option">
-                  Кредит на образование
-                </option>
-                <option class="application-type-option">Ипотека</option>
-                <option class="application-type-option">Автокредит</option>
-                <option class="application-type-option">
-                  Кредит на открытие бизнеса
-                </option>
-              </select>
-                            <input type="number" class="input" id="sum" name="sum" placeholder="Сумма" />
-                            <input type="date" class="input" id="due-date" name="dueDate" placeholder="Срок" />
-                            <input class="button-type-1" type="submit" id="create-an-application" value="Отправить" href="applicationsPage.html" />
-                        </form>
-                    </div>
-                </div>
+  <body>
+    <main>
+      <%- include('blocks/header.ejs') %>
+      <div class="applications-page">
+        <div class="modal-add-application">
+          <div class="modal-content">
+            <div class="close-modal-button-container">
+              <button class="close-modal-button">x</button>
             </div>
-            <h1 id="applications">Заявки</h1>
-            <div id="applications-box">
-                <table class="applications-table">
-                    <thead class="table-header">
-                        <tr>
-                            <th>Номер</th>
-                            <th>Тип</th>
-                            <th>Дата создания</th>
-                            <th>Статус</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% if(applicationsData.length!=0){
-        applicationsData.forEach(function(application) { %>
-                            <tr>
-                                <td class="table-cell">
-                                    <% application.id %>
-                                </td>
-                                <td class="table-cell">
-                                    <% application.type %>
-                                </td>
-                                <td class="table-cell">
-                                    <% application.dueDate %>
-                                </td>
-                                <td class="table-cell">
-                                    <% application.status %>
-                                </td>
-                            </tr>
-                            <% })} else { %>
-                                <tr>
-                                    <td colspan="4">Заявки не найдены</td>
-                                </tr>
-                                <% } %>
-                    </tbody>
-                </table>
-                <button class="add-button" data-trigger>+</button>
+            <p class="sub-heading" id="add-application-heading">
+              <b>Создание заявки</b>
+            </p>
+            <div class="creating-application">
+              <form id="application-form" method="post">
+                <select id="application-type" name="applicationtype">
+                  <option class="application-type-option">
+                    Кредит наличными
+                  </option>
+                  <option class="application-type-option">
+                    Оформление кредитной карты
+                  </option>
+                  <option class="application-type-option">
+                    Кредит на образование
+                  </option>
+                  <option class="application-type-option">Ипотека</option>
+                  <option class="application-type-option">Автокредит</option>
+                  <option class="application-type-option">
+                    Кредит на открытие бизнеса
+                  </option>
+                </select>
+                <input
+                  type="number"
+                  class="input"
+                  id="sum"
+                  name="sum"
+                  placeholder="Сумма" />
+                <input
+                  type="date"
+                  class="input"
+                  id="due-date"
+                  name="dueDate"
+                  placeholder="Срок" />
+                <input
+                  class="button-type-1"
+                  type="submit"
+                  id="create-an-application"
+                  value="Отправить"
+                  href="applicationsPage.html" />
+              </form>
             </div>
-        </main>
-        <footer class="footer">
-            <p id="author">Disigned by @perpetuumm0bi1e</p>
-            <p id="author">2023</p>
-        </footer>
-</body>
-<script type="text/javascript" src="script.js"></script>
-
+          </div>
+        </div>
+        <h1 id="applications">Заявки</h1>
+        <div id="applications-box">
+          <table class="applications-table">
+            <thead class="table-header">
+              <tr>
+                <th>Номер</th>
+                <th>Тип</th>
+                <th>Дата создания</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(applicationsData.length!=0){
+              applicationsData.forEach(function(application) { %>
+              <tr>
+                <td class="table-cell"><% application.id %></td>
+                <td class="table-cell"><% application.type %></td>
+                <td class="table-cell"><% application.dueDate %></td>
+                <td class="table-cell"><% application.status %></td>
+              </tr>
+              <% })} else { %>
+              <tr>
+                <td colspan="4">Заявки не найдены</td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <button class="add-button" data-trigger>+</button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p id="author">Disigned by @perpetuumm0bi1e</p>
+      <p id="author">2023</p>
+    </footer>
+  </body>
+  <script type="text/javascript" src="/public/script.js"></script>
 </html>

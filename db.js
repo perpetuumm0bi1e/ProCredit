@@ -25,25 +25,6 @@ class User {
     }
 }
 class Users {
-    static authenticateUser(login, password) {
-        return new Promise((res, rej) => {
-            db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
-                if (err) {
-                    console.log('FINDING USER FAILED', err);
-                } else if (result) {
-                    if (result.password == password) {
-                        console.log('Passwords matched');
-                        let thisUser = new User(result.id, result.surname, result.name, result.patronymic, result.phone, result.login, result.password);
-                        console.log(thisUser);
-                        res(result.login);
-                    } else if (result.password != password) {
-                        console.log('Incorrect password');
-                        rej('Incorrect password');
-                    }
-                }
-            });
-        });
-    }
     static findUser(userLogin) {
         return new Promise((res, rej) => {
             db.get(`SELECT * FROM users WHERE login = '${userLogin}'`, (err, result) => {
@@ -65,10 +46,9 @@ class Users {
                 console.log('ADDING USER FAILED', err);
             }
         });
-        const sql2 = `SELECT id FROM users WHERE login = '${user.login}'`;
-        db.get(sql2, (err, result) => {
+        db.get(`SELECT id FROM users WHERE login = '${user.login}'`, (err, result) => {
             if (err) {
-                console.log('CREATING USER TABLE FAILED', err);
+                console.log('FINDING USER FAILED', err);
             } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 const sql = `CREATE TABLE IF NOT EXISTS ${userTableName}(
@@ -82,13 +62,44 @@ class Users {
             }
         });
     }
-    static deleteUser(user) {
-        const sql = `DELETE FROM users WHERE login = '${user.login}'`;
-        db.run(sql, (err) => {
+    static deleteUser(login) {
+        db.get(`SELECT id FROM users WHERE login = '${login}'`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER FAILED', err);
+            } else if (result) {
+                let userTableName = 'id_' + result.id + '_applications';
+                db.run(`DROP TABLE IF EXISTS ${userTableName}`, (err) => {
+                    if(err){
+                        console.log('DELETING USER TABLE ERROR', err);
+                    } else {
+                        console.log('USER TABLE SUCCESSFULLY DELETED');
+                    }
+                });
+            }
+        });
+        db.run(`DELETE FROM users WHERE login = '${login}'`, (err) => {
             if (err) {
                 console.log('DELITING USER FAILED', err);
+            } else {
+                console.log('USER SUCCESSFULLY DELETED');
             }
-        })
+        });
+        
+    }
+    static editUser(login, newData) {
+        db.run(`UPDATE users SET surname = ${newData.surname}, 
+                                 name = ${newData.name}, 
+                                 patronymic = ${newData.patronymic}, 
+                                 phone = ${newData.phone}, 
+                                 login = ${newData.login}, 
+                                 password = ${newData.password}
+                            WHERE login = '${login}'`,  (err) => {
+            if (err) {
+                console.log('EDITING USER FAILED', err);
+            } else {
+                console.log('USER DATA SUCCESSFULLY EDITED');
+            }
+        });
     }
 }
 

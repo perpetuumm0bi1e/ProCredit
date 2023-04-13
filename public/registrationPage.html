@@ -1,58 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Регистрация | ProCredit</title>
-</head>
+  </head>
 
-<body>
-    <header>
-        <div class="header">
-            <a href="mainPage.html" id="logo">Pro Credit</a>
-            <a href="applicationsPage.html" id="applications-link">Заявки</a>
-            <a href="autenticationPage.html" id="profile-link">Профиль</a>
-        </div>
-    </header>
+  <body>
     <main>
-        <div class="registration-page">
-            <h1 id="registration">Регистрация</h1>
-            <div id="registration-box">
-                <form id="registration-form" method="post">
-                    <div class="input-data">
-                        <div class="personalData">
-                            <p class="sub-heading" id="personal-data-label">Личные данные</p>
-                            <input type="text" class="input" id="surname" name="surname" placeholder="Фамилия" />
-                            <input type="text" class="input" id="name" name="name" placeholder="Имя" />
-                            <input type="text" class="input" id="patronymic" name="patronymic" placeholder="Отчество" />
-                            <input type="tel" class="input" id="phone" name="phone" placeholder="+7" />
-                        </div>
-                        <div class="login-data">
-                            <p class="sub-heading" id="contact-information-label">
-                                Данные для входа
-                            </p>
-                            <input type="text" class="input" id="login" name="login" placeholder="Логин" />
-                            <input type="password" class="input" id="password-first" name="password" placeholder="Пароль" />
-                            <input type="password" class="input" id="password-second" placeholder="Повторите пароль" />
-                        </div>
-                    </div>
-                    <div class="input-button">
-                        <input class="button-type-1" type="submit" id="create-an-account" value="Создать аккаунт" href="mainPage.html" />
-                    </div>
-                </form>
+      <div class="header">
+        <a href="/" id="logo">Pro Credit</a>
+        <a href="/applications" id="applications-link">Заявки</a>
+        <a href="/profile" id="profile-link">Профиль</a>
+      </div>
+
+      <div class="registration-page">
+        <h1 id="registration">Регистрация</h1>
+        <div class="registration-box">
+          <form id="registration-form" method="post" action="/registered">
+            <div class="input-data">
+              <div class="personal-data">
+                <p class="sub-heading">Личные данные</p>
+                <input
+                  type="text"
+                  class="input"
+                  name="surname"
+                  placeholder="Фамилия" />
+                <input
+                  type="text"
+                  class="input"
+                  name="name"
+                  placeholder="Имя" />
+                <input
+                  type="text"
+                  class="input"
+                  name="patronymic"
+                  placeholder="Отчество (при наличии)" />
+                <input type="tel" class="input" name="phone" placeholder="+7" />
+              </div>
+              <div class="login-data">
+                <p class="sub-heading">Данные для входа</p>
+                <input
+                  type="text"
+                  class="input"
+                  name="login"
+                  placeholder="Логин" />
+                <input
+                  type="password"
+                  class="input"
+                  name="passwordFirst"
+                  placeholder="Пароль" />
+                <input
+                  type="password"
+                  class="input"
+                  name="passwordSecond"
+                  placeholder="Повторите пароль" />
+              </div>
             </div>
+            <input
+              class="button-type-1"
+              type="submit"
+              id="create-an-account"
+              value="Создать аккаунт" />
+            <button id="new-account-button">
+              <a href="/autentication">У меня есть аккаунт</a>
+            </button>
+          </form>
         </div>
+      </div>
     </main>
     <footer class="footer">
-        <p id="author">Disigned by @perpetuumm0bi1e</p>
-        <p id="author">2023</p>
+      <p id="author">Disigned by @perpetuumm0bi1e</p>
+      <p id="author">2023</p>
     </footer>
-</body>
-
+  </body>
+  <script type="text/javascript" src="/public/script.js"></script>
 </html>

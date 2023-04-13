@@ -1,3 +1,4 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,57 +6,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Профиль | ProCredit</title>
 </head>
 
 <body>
-    <%- include('blocks/header.ejs') %>
-        <main class="profilePage">
+        <main>
+            <%- include('blocks/header.ejs') %>
+            <div class="profile-page">
             <h1 id="profile">Профиль</h1>
-            <div id="profileBox">
-                <div class="userData">
-                    <div class="profilePersonalData">
-                        <p class="subHeading" id="contactInformationLabel">Личные данные</p>
-                        <p id="fio" class="dataCategory">ФИО</p>
-                        <p id="fio" class="description">
-                            <%= surname %> <%= name %> <%= patronymic %>
-                        </p>
-                        <p id="phoneNumber" class="dataCategory">Контактный номер</p>
-                        <p id="phoneNumber" class="description">+
-                            <%= phone %>
-                        </p>
+            <div class="profile-box">
+                <form method="post" action="/saveChanges">
+                    <div class="user-data">
+                        <div class="profile-personal-data">
+                            <p class="sub-heading" id="contact-information-label">
+                                Личные данные
+                            </p>
+                            <p id="fio" class="data-category">ФИО</p>
+                            <input class="input description profile-input" type="text" name="newFIO" value="<%= surname %> <%= name %> <%= patronymic %>"  />
+                            <p id="phone-number" class="data-category">Контактный номер</p>
+                            <input class="input description  profile-input" type="text" name="newPhone" value="+<%= phone %>"  />
+                        </div>
+                        <div class="profile-login-data">
+                            <p class="sub-heading" id="contact-information-label">
+                                Данные для входа
+                            </p>
+                            <p id="profile-login" class="data-category">Логин</p>
+                            <input class="input description profile-input" type="text" name="newLogin" value="<%=login%>"  />
+                            <p id="profile-password" class="data-category">Пароль</p>
+                            <input class="input description profile-input" type="password" name="newPassword" value="<%=password%>"  />
+                        </div>
                     </div>
-                    <div class="profileLoginData">
-                        <p class="subHeading" id="contactInformationLabel">
-                            Данные для входа
-                        </p>
-                        <p id="profileLogin" class="dataCategory">Логин</p>
-                        <p id="profileLogin" class="description">
-                            <%= login %>
-                        </p>
-                        <p id="profilePassword" class="dataCategory">Пароль</p>
-                        <input id="profilePassword" class="input" type="password" value="qwerty"  />
+                    <div class="profile-box-buttons">
+                        <button class="unbordered-button">
+                          <a href="/profile">Отменить изменения</a>
+                        </button>
+                        <input type="submit" class="button-type-1" id="edit-personal-information" name="editPersonalInformation" value="Сохранить" />
                     </div>
-                </div>
-                <div class="profileBoxButtons">
-                    <form method="post" action="/main">
-                    <input type="submit" class="buttonType1" id="log-out" name="log-out" value="Выйти">
-                    <button class="buttonType1" id="edit-personal-information">
-            Изменить
-          </button>
-          <input type="submit" class="buttonType1" id="delete-an-account" name="delete-an-account" value="Удалить аккаунт">
-        </form>
-                </div>
+                </form>
             </div>
         </main>
         <footer class="footer">
             <p id="author">Disigned by @perpetuumm0bi1e</p>
-            <p id="author">2023</p>
         </footer>
 </body>
-
+<script type="text/javascript" src="/public/script.js"></script>
 </html>
