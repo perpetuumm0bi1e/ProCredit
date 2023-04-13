@@ -1,13 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+const express = require('express'),
+bodyParser = require('body-parser'),
+session = require('express-session'),
+app = express();
+
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-var app = express();
 var dbModule = require('./db');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
+
+app.use(
+    session({
+      secret: 'secret key',
+      saveUninitialized: true,
+    })
+  )
 
 app.set('view engine', 'ejs');
 
@@ -72,16 +80,11 @@ app.post('/profile', urlencodedParser, function(req, res) {
         return res.sendStatus(400);
     } else {
         let result = dbModule.Users.authenticateUser(req.body.autenticationLogin, req.body.autenticationPassword);
-        console.log(typeof(result));
         if(typeof(result) == 'object'){
-            /*
-            session = req.session;
-            session.userid = req.result.id;
-
-            console.log('Сессия запущена');
+            console.log('Авторизация прошла успешно');
+            req.session.userLogin = req.body.autenticationLogin;
             console.log(req.session);
-            */
-console.log('Авторизация прошла успешно');
+            console.log(result);
             res.render('profilePage', { 
                                         surname: result.surname, 
                                         name: result.name, 
@@ -89,18 +92,10 @@ console.log('Авторизация прошла успешно');
                                         phone: result.phone,
                                         login: result.login
                                     });
-        } else if (result == null){
-            console.log("Incorrect");
-
+        } else if (result == 'Incorrect password'){
+            console.log("Неправильный пароль");
             res.render('registrationPage'); // передать ошибку
         } 
-        /*
-        else if (result == 'notFound'){
-            console.log("Not found");
-
-            res.render('registrationPage'); // передать ошибку
-        }
-        */
     }
 });
 

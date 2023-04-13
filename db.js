@@ -33,7 +33,8 @@ class Users {
                 } else if (result){
                     if(result.password == password){
                         console.log('Passwords matched');
-                        res(result);
+                        let thisUser = new User(result.id, result.surname, result.name, result.patronymic, result.phone, result.login, result.password);                        console.log(thisUser);
+                         res(result.login);
                     } else if (result.password != password){
                         console.log('Incorrect password');
                          rej('Incorrect password');
@@ -42,13 +43,17 @@ class Users {
             });
         });
     }
-    static findUser(user) {
-        db.get(`SELECT * FROM users WHERE login = '${user.login}'`, (err, result) => {
-            if (err) {
-                console.log('FINDING USER FAILED', err);
-            } else if (result){
-                console.log('User detected');
-            }
+    static findUser(userLogin) {
+        return new Promise((res, rej) => {
+            db.get(`SELECT * FROM users WHERE login = '${userLogin}'`, (err, result) => {
+                if (err) {
+                    console.log('FINDING USER FAILED', err);
+                    rej('User does not exist');
+                } else if (result){
+                    console.log('User detected');
+                    res(result);
+                }
+            });
         });
     }
     static addUser(user) {

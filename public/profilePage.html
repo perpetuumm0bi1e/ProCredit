@@ -26,38 +26,68 @@
       <h1 id="profile">Профиль</h1>
       <div id="profileBox">
         <form id="profile-box" method="post" action="'/main">
-        <div class="userData">
-          <div class="profilePersonalData">
-            <p class="subHeading" id="contactInformationLabel">Личные данные</p>
-            <p id="fio" class="dataCategory">ФИО</p>
-            <input class="input profile-input unchanged" type="text" id="edited-fio" name="edited-fio" value="Фамилия Имя отчество" readonly>
-            <p id="phoneNumber" class="dataCategory">Контактный номер</p>
-            <input class="description profile-input unchanged" type="text" id="edited-phone-number" name="edited-phone-number" value="79012345678" readonly>
+          <div class="userData">
+            <div class="profilePersonalData">
+              <p class="subHeading" id="contactInformationLabel">
+                Личные данные
+              </p>
+              <p id="fio" class="dataCategory">ФИО</p>
+              <input
+                class="description input profile-input unchanged"
+                type="text"
+                id="edited-fio"
+                name="edited-fio"
+                value="Фамилия Имя отчество"
+                readonly />
+              <p id="phoneNumber" class="dataCategory">Контактный номер</p>
+              <input
+                class="description input profile-input unchanged"
+                type="text"
+                id="edited-phone-number"
+                name="edited-phone-number"
+                value="+79012345678"
+                readonly />
+            </div>
+            <div class="profileLoginData">
+              <p class="subHeading" id="contactInformationLabel">
+                Данные для входа
+              </p>
+              <p id="profileLogin" class="dataCategory">Логин</p>
+              <input
+                class="description input profile-input unchanged"
+                type="text"
+                id="edited-login"
+                name="edited-login"
+                value="login"
+                readonly />
+              <p id="profilePassword" class="dataCategory">Пароль</p>
+              <input
+                class="description input profile-input unchanged"
+                id="edited-password"
+                name="edited-password"
+                type="password"
+                value="qwerty"
+                readonly />
+            </div>
           </div>
-          <div class="profileLoginData">
-            <p class="subHeading" id="contactInformationLabel">
-              Данные для входа
-            </p>
-            <p id="profileLogin" class="dataCategory">Логин</p>
-            <input class="input profile-input unchanged" type="text" id="edited-login" name="edited-login" value="login" readonly>
-            <p id="profilePassword" class="dataCategory">Пароль</p>
+          <div class="profileBoxButtons">
             <input
-            class="input profile-input unchanged"
-              id="edited-password"
-              name="edited-password"
-              type="password"
-              value="qwerty"
-              readonly />
+              type="submit"
+              class="buttonType1"
+              id="log-out"
+              name="log-out"
+              value="Выйти" />
+            <button class="buttonType1" id="edit-personal-information">
+              Изменить
+            </button>
+            <input
+              type="submit"
+              class="buttonType1"
+              id="delete-an-account"
+              name="delete-an-account"
+              value="Удалить аккаунт" />
           </div>
-        </div>
-        <div class="profileBoxButtons">
-          <input type="submit" class="buttonType1" id="log-out" name="log-out" value="Выйти">
-          <button class="buttonType1" id="edit-personal-information">
-            Изменить
-          </button>
-          <input type="submit" class="buttonType1" id="delete-an-account" name="delete-an-account" value="Удалить аккаунт">
-        </div>
-      </form>
+        </form>
       </div>
     </main>
     <footer class="footer">
