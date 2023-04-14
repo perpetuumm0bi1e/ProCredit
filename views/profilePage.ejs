@@ -11,44 +11,43 @@
 </head>
 
 <body>
-        <main>
-            <%- include('blocks/header.ejs') %>
+    <main>
+        <%- include('blocks/header.ejs') %>
             <div class="profile-page">
-            <h1 id="profile">Профиль</h1>
-            <div class="profile-box box-animation">
-                <form method="post" action="/editAccount">
-                    <div class="user-data">
-                        <div class="profile-personal-data">
-                            <p class="sub-heading" id="contact-information-label">
-                                Личные данные
-                            </p>
-                            <p id="fio" class="data-category">ФИО</p>
-                            <input class="input description profile-input unchanged" type="text" value="<%= surname %> <%= name %> <%= patronymic %>" readonly />
-                            <p id="phone-number" class="data-category">Контактный номер</p>
-                            <input class="input description  profile-input unchanged" type="text"value="+<%= phone %>" readonly />
+                <h1 id="profile">Профиль</h1>
+                <div class="profile-box box-animation">
+                    <form method="post" action="/editAccount">
+                        <div class="user-data">
+                            <div class="profile-personal-data">
+                                <p class="sub-heading" id="contact-information-label">
+                                    Личные данные
+                                </p>
+                                <p id="fio" class="data-category">ФИО</p>
+                                <input class="input description profile-input unchanged" type="text" value="<%= surname %> <%= name %> <%= patronymic %>" readonly />
+                                <p id="phone-number" class="data-category">Контактный номер</p>
+                                <input class="input description  profile-input unchanged" type="text" value="+<%= phone %>" readonly />
+                            </div>
+                            <div class="profile-login-data">
+                                <p class="sub-heading" id="contact-information-label">
+                                    Данные для входа
+                                </p>
+                                <p id="profile-login" class="data-category">Логин</p>
+                                <input class="input description profile-input unchanged" type="text" value="<%=login%>" readonly />
+                                <p id="profile-password" class="data-category">Пароль</p>
+                                <input class="input description profile-input unchanged" type="password" value="<%=password%>" readonly />
+                            </div>
                         </div>
-                        <div class="profile-login-data">
-                            <p class="sub-heading" id="contact-information-label">
-                                Данные для входа
-                            </p>
-                            <p id="profile-login" class="data-category">Логин</p>
-                            <input class="input description profile-input unchanged" type="text" value="<%=login%>" readonly />
-                            <p id="profile-password" class="data-category">Пароль</p>
-                            <input class="input description profile-input unchanged"type="password" value="<%=password%>" readonly />
+                        <div class="profile-box-buttons">
+                            <input type="submit" class="button-type-1 additional-action-button" id="log-out" name="logOut" value="Выйти" />
+                            <input type="submit" class="button-type-1" id="edit-personal-information" name="editPersonalInformation" value="Изменить" />
+                            <input type="submit" class="button-type-1 additional-action-button" id="delete-an-account" name="deleteAnAccount" value="Удалить аккаунт" />
                         </div>
-                    </div>
-                    <div class="profile-box-buttons">
-                        <input type="submit" class="button-type-1 additional-action-button" id="log-out" name="logOut" value="Выйти" />
-                        <input type="submit" class="button-type-1" id="edit-personal-information" name="editPersonalInformation" value="Изменить" />
-                        <input type="submit" class="button-type-1 additional-action-button" id="delete-an-account" name="deleteAnAccount" value="Удалить аккаунт" />
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            </div>
-        </main>
-        <footer class="footer">
-            <p id="author">Disigned by @perpetuumm0bi1e</p>
-        </footer>
+    </main>
+    <%- include('blocks/footer.ejs') %>
 </body>
 <script type="text/javascript" src="/public/script.js"></script>
+
 </html>

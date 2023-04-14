@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Заявки | ProCredit</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <main>
-      <%- include('blocks/header.ejs') %>
-      <div class="applications-page">
-        <div class="modal-add-application box-animation">
-          <div class="modal-content">
-            <div class="close-modal-button-container">
-              <button class="close-modal-button">x</button>
-            </div>
-            <p class="sub-heading" id="add-application-heading">
-              <b>Создание заявки</b>
-            </p>
-            <div class="creating-application">
-              <form
-                id="application-form"
-                method="post"
-                action="/createAnApplication">
-                <select id="application-type" name="applicationType">
+        <%- include('blocks/header.ejs') %>
+            <div class="applications-page">
+                <div class="modal-add-application box-animation">
+                    <div class="modal-content">
+                        <div class="close-modal-button-container">
+                            <button class="round-button close-modal-button">x</button>
+                        </div>
+                        <p class="sub-heading" id="add-application-heading">
+                            <b>Создание заявки</b>
+                        </p>
+                        <div class="creating-application">
+                            <form id="application-form" method="post" action="/createAnApplication">
+                                <select id="application-type" name="applicationType">
                   <option
                     class="application-type-option"
                     value="Кредит наличными">
@@ -53,61 +51,55 @@
                     Кредит на открытие бизнеса
                   </option>
                 </select>
-                <input
-                  type="number"
-                  class="input"
-                  name="sum"
-                  placeholder="Сумма" />
-                <input
-                  type="date"
-                  class="input"
-                  name="dueDate"
-                  placeholder="Срок" />
-                <%- include(error) %>
-                <input
-                  class="button-type-1"
-                  type="submit"
-                  name="createAnApplication"
-                  value="Создать" />
-              </form>
-            </div>
-          </div>
-        </div>
-        <h1 id="applications">Заявки</h1>
-        <div class="applications-box box-animation">
-          <table class="applications-table">
-            <thead class="table-header">
-              <tr>
-                <th>Номер</th>
-                <th>Тип</th>
-                <th>Дата создания</th>
-                <th>Статус</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% if(applicationsData.length != 0){
+                                <input type="number" class="input" name="sum" placeholder="Сумма" />
+                                <input type="date" class="input" name="dueDate" placeholder="Срок" />
+                                <%- include(error) %>
+                                    <input class="button-type-1" type="submit" name="createAnApplication" value="Создать" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <h1 id="applications">Заявки</h1>
+                <div class="applications-box box-animation">
+                    <table class="applications-table">
+                        <thead class="table-header">
+                            <tr>
+                                <th>Номер</th>
+                                <th>Тип</th>
+                                <th>Дата создания</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(applicationsData.length != 0){
               applicationsData.forEach(function(application) { %>
-              <tr>
-                <td class="table-cell"><%= application.type %></td>
-                <td class="table-cell"><%= application.sum %></td>
-                <td class="table-cell"><%= application.dueDate %></td>
-                <td class="table-cell"><%= application.status %></td>
-              </tr>
-              <% })} else { %>
-              <tr>
-                <td colspan="4">Заявки не найдены</td>
-              </tr>
-              <% } %>
-            </tbody>
-          </table>
-          <button class="add-button" data-trigger>+</button>
-        </div>
-      </div>
+                                <tr>
+                                    <td class="table-cell">
+                                        <%= application.type %>
+                                    </td>
+                                    <td class="table-cell">
+                                        <%= application.sum %>
+                                    </td>
+                                    <td class="table-cell">
+                                        <%= application.dueDate %>
+                                    </td>
+                                    <td class="table-cell">
+                                        <%= application.status %>
+                                    </td>
+                                </tr>
+                                <% })} else { %>
+                                    <tr>
+                                        <td colspan="4">Заявки не найдены</td>
+                                    </tr>
+                                    <% } %>
+                        </tbody>
+                    </table>
+                    <button class="round-button add-button" data-trigger>+</button>
+                </div>
+            </div>
     </main>
-    <footer class="footer">
-      <p id="author">Disigned by @perpetuumm0bi1e</p>
-      <p id="author">2023</p>
-    </footer>
-  </body>
-  <script type="text/javascript" src="/public/script.js"></script>
+    <%- include('blocks/footer.ejs') %>
+</body>
+<script type="text/javascript" src="/public/script.js"></script>
+
 </html>
