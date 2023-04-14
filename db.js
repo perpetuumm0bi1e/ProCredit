@@ -25,9 +25,9 @@ class User {
     }
 }
 class Users {
-    static findUser(userLogin) {
+    static findUser(login) {
         return new Promise((res, rej) => {
-            db.get(`SELECT * FROM users WHERE login = '${userLogin}'`, (err, result) => {
+            db.get(`SELECT * FROM users WHERE login = '${login}'`, (err, result) => {
                 if (err) {
                     console.log('FINDING USER FAILED', err);
                     rej('User does not exist');
@@ -72,7 +72,7 @@ class Users {
                     if (err) {
                         console.log('DELETING USER TABLE ERROR', err);
                     } else {
-                        console.log('USER TABLE SUCCESSFULLY DELETED');
+                        console.log('USER TABLE DELETED');
                     }
                 });
             }
@@ -81,7 +81,7 @@ class Users {
             if (err) {
                 console.log('DELITING USER FAILED', err);
             } else {
-                console.log('USER SUCCESSFULLY DELETED');
+                console.log('USER DELETED');
             }
         });
 
@@ -99,15 +99,14 @@ class Users {
             if (err) {
                 console.log(err);
             } else {
-                console.log('USER DATA SUCCESSFULLY EDITED');
+                console.log('USER DATA EDITED');
             }
         });
     }
 }
 
 class Application {
-    constructor(id, type, sum, dueDate, status) {
-        this.id = id;
+    constructor(type, sum, dueDate, status) {
         this.type = type;
         this.sum = sum;
         this.dueDate = dueDate;
@@ -116,8 +115,8 @@ class Application {
 }
 
 class Applications {
-    static findApplication(user) {
-        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+    static findApplication(login) {
+        db.get(`SELECT id FROM users WHERE login = '${login}'`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
             } else if (result) {
@@ -133,14 +132,18 @@ class Applications {
             }
         });
     }
-    static addApplication(user, application) {
-        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+    static addApplication(login, application) {
+        db.get(`SELECT id FROM users WHERE login = '${login}'`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
             } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
-                const sql = `INSERT INTO ${userTableName}(type, sum, dueDate, status) values (?, ?, ?, ?)`;
-                db.run(sql, application.type, application.sum, application.dueDate, 'На рассмотрении', (err) => {
+                db.run(`INSERT INTO ${userTableName}(type, sum, dueDate, status) values (?, ?, ?, ?)`, 
+                        application.type,
+                        application.sum,
+                        application.dueDate,
+                        application.status,
+                        (err) => {
                     if (err) {
                         console.log('ADDING APPLICATION FAILED', err);
                     }
@@ -148,8 +151,8 @@ class Applications {
             }
         });
     }
-    static deleteUser(user, application) {
-        db.get(`SELECT id FROM users WHERE login = ${user.login}`, (err, result) => {
+    static deleteUser(login, application) {
+        db.get(`SELECT id FROM users WHERE login = '${login}'`, (err, result) => {
             if (err) {
                 console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
             } else if (result) {

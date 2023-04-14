@@ -16,83 +16,84 @@
   </head>
 
   <body>
-    <header>
+    <main>
       <div class="header">
-        <a href="mainPage.html" id="logo">Pro Credit</a>
-        <a href="applicationsPage.html" id="applications-link">Заявки</a>
-        <a href="autenticationPage.html" id="profile-link">Профиль</a>
+        <a href="/" id="logo">Pro Credit</a>
+        <a href="/applications" id="applications-link">Заявки</a>
+        <a href="/profile" id="profile-link">Профиль</a>
       </div>
-    </header>
-    <main class="profile-page">
-      <h1 id="profile">Профиль</h1>
-      <div class="profile-box">
-        <form method="post" action="'/main">
-          <div class="user-data">
-            <div class="profile-personal-data">
-              <p class="sub-heading" id="contact-information-label">
-                Личные данные
-              </p>
-              <p id="fio" class="data-category">ФИО</p>
-              <input
-                class="description input profile-input unchanged"
-                type="text"
-                id="edited-fio"
-                name="edited-fio"
-                value="Фамилия Имя отчество"
-                readonly />
-              <p id="phone-number" class="data-category">Контактный номер</p>
-              <input
-                class="description input profile-input unchanged"
-                type="text"
-                id="edited-phone-number"
-                name="edited-phone-number"
-                value="+79012345678"
-                readonly />
+      <div class="profile-page">
+        <h1 id="profile">Профиль</h1>
+        <div class="profile-box box-animation">
+          <form method="post" action="'/main">
+            <div class="user-data">
+              <div class="profile-personal-data">
+                <p class="sub-heading" id="contact-information-label">
+                  Личные данные
+                </p>
+                <p id="fio" class="data-category">ФИО</p>
+                <input
+                  class="description input profile-input unchanged"
+                  type="text"
+                  id="edited-fio"
+                  name="edited-fio"
+                  value="Фамилия Имя отчество"
+                  readonly />
+                <p id="phone-number" class="data-category">Контактный номер</p>
+                <input
+                  class="description input profile-input unchanged"
+                  type="text"
+                  id="edited-phone-number"
+                  name="edited-phone-number"
+                  value="+79012345678"
+                  readonly />
+              </div>
+              <div class="profile-login-data">
+                <p class="sub-heading" id="contact-information-label">
+                  Данные для входа
+                </p>
+                <p id="profile-login" class="data-category">Логин</p>
+                <input
+                  class="description input profile-input unchanged"
+                  type="text"
+                  id="edited-login"
+                  name="edited-login"
+                  value="login"
+                  readonly />
+                <p id="profile-password" class="data-category">Пароль</p>
+                <input
+                  class="description input profile-input unchanged"
+                  id="edited-password"
+                  name="edited-password"
+                  type="password"
+                  value="qwerty"
+                  readonly />
+              </div>
             </div>
-            <div class="profile-login-data">
-              <p class="sub-heading" id="contact-information-label">
-                Данные для входа
-              </p>
-              <p id="profile-login" class="data-category">Логин</p>
+            <div class="profile-box-buttons">
               <input
-                class="description input profile-input unchanged"
-                type="text"
-                id="edited-login"
-                name="edited-login"
-                value="login"
-                readonly />
-              <p id="profile-password" class="data-category">Пароль</p>
+                type="submit"
+                class="button-type-1 additional-action-button"
+                id="log-out"
+                name="log-out"
+                value="Выйти" />
+              <button class="button-type-1" id="edit-personal-information">
+                Изменить
+              </button>
               <input
-                class="description input profile-input unchanged"
-                id="edited-password"
-                name="edited-password"
-                type="password"
-                value="qwerty"
-                readonly />
+                type="submit"
+                class="button-type-1 additional-action-button"
+                id="delete-an-account"
+                name="delete-an-account"
+                value="Удалить аккаунт" />
             </div>
-          </div>
-          <div class="profile-box-buttons">
-            <input
-              type="submit"
-              class="button-type-1 additional-action-button"
-              id="log-out"
-              name="log-out"
-              value="Выйти" />
-            <button class="button-type-1" id="edit-personal-information">
-              Изменить
-            </button>
-            <input
-              type="submit"
-              class="button-type-1 additional-action-button"
-              id="delete-an-account"
-              name="delete-an-account"
-              value="Удалить аккаунт" />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </main>
     <footer class="footer">
       <p id="author">Disigned by @perpetuumm0bi1e</p>
     </footer>
   </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>

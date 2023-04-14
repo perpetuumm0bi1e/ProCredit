@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Регистрация | ProCredit</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <%- include('blocks/header.ejs') %>
-            <div class="registration-page">
-                <h1 id="registration">Регистрация</h1>
-                <div class="registration-box">
-                    <form id="registration-form" method="post" action="/registered">
-                        <div class="input-data">
-                            <div class="personal-data">
-                                <p class="sub-heading">Личные данные</p>
-                                <input type="text" class="input" name="surname" placeholder="Фамилия" />
-                                <input type="text" class="input" name="name" placeholder="Имя" />
-                                <input type="text" class="input" name="patronymic" placeholder="Отчество (при наличии)" />
-                                <input type="tel" class="input" name="phone" placeholder="+7" />
-                            </div>
-                            <div class="login-data">
-                                <p class="sub-heading">Данные для входа</p>
-                                <input type="text" class="input" name="login" placeholder="Логин" />
-                                <input type="password" class="input" name="passwordFirst" placeholder="Пароль" />
-                                <input type="password" class="input" name="passwordSecond" placeholder="Повторите пароль" />
-                            </div>
-                        </div>
-                        <%- include(error) %>
-                            <input class="button-type-1" type="submit" id="create-an-account" value="Создать аккаунт" />
-                            <button class="unbordered-button">
+      <%- include('blocks/header.ejs') %>
+      <div class="registration-page">
+        <h1 id="registration">Регистрация</h1>
+        <div class="registration-box box-animation">
+          <form id="registration-form" method="post" action="/registered">
+            <div class="input-data">
+              <div class="personal-data">
+                <p class="sub-heading">Личные данные</p>
+                <input
+                  type="text"
+                  class="input"
+                  name="surname"
+                  placeholder="Фамилия" />
+                <input
+                  type="text"
+                  class="input"
+                  name="name"
+                  placeholder="Имя" />
+                <input
+                  type="text"
+                  class="input"
+                  name="patronymic"
+                  placeholder="Отчество (при наличии)" />
+                <input type="tel" class="input" name="phone" placeholder="+7" />
+              </div>
+              <div class="login-data">
+                <p class="sub-heading">Данные для входа</p>
+                <input
+                  type="text"
+                  class="input"
+                  name="login"
+                  placeholder="Логин" />
+                <input
+                  type="password"
+                  class="input"
+                  name="passwordFirst"
+                  placeholder="Пароль" />
+                <input
+                  type="password"
+                  class="input"
+                  name="passwordSecond"
+                  placeholder="Повторите пароль" />
+              </div>
+            </div>
+            <%- include(error) %>
+            <input
+              class="button-type-1"
+              type="submit"
+              id="create-an-account"
+              value="Создать аккаунт" />
+            <button class="unbordered-button">
               <a href="/autentication">У меня есть аккаунт</a>
             </button>
-                    </form>
-                </div>
-            </div>
+          </form>
+        </div>
+      </div>
     </main>
     <footer class="footer">
-        <p id="author">Disigned by @perpetuumm0bi1e</p>
-        <p id="author">2023</p>
+      <p id="author">Disigned by @perpetuumm0bi1e</p>
+      <p id="author">2023</p>
     </footer>
-</body>
-<script type="text/javascript" src="/public/script.js"></script>
-
+  </body>
+  <script type="text/javascript" src="/public/script.js"></script>
 </html>

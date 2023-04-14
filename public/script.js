@@ -1,3 +1,4 @@
+// анимация хедера
 document.addEventListener('DOMContentLoaded', () => {
     const onScrollHeader = () => {
         const header = document.querySelector('.header');
@@ -21,20 +22,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     onScrollHeader();
 });
-let tableCells = document.getElementsByClassName('tableCell');
+// анимация появления боксов
+function onEntry(entry) {
+    entry.forEach(change => {
+      if (change.isIntersecting) {
+        change.target.classList.add('box-animation-show');
+      }
+    });
+  }
+  let options = { threshold: [0.5] };
+  let observer = new IntersectionObserver(onEntry, options);
+  let elements = document.querySelectorAll('.box-animation');
+  for (let elm of elements) {
+    observer.observe(elm);
+  }
+
+// подсветка строк таблицы
+let tableCells = document.getElementsByClassName('table-cell');
+
 
 for (let i = 0; i < tableCells.length; i++) {
     tableCells[i].onmouseover = function() {
-        tableCells[i].parentNode.style.background = 'rgba(235, 235, 235, 0.25)';
+        tableCells[i].parentNode.style.background = 'rgba(235, 235, 235, 0.4)';
     }
     tableCells[i].onmouseleave = function() {
-        tableCells[i].parentNode.style.background = 'none';}
-
+        tableCells[i].parentNode.style.background = 'none';
+    }
 }
 
+// модальное окно
 (function(){
-var modal = document.querySelector('.modal-addApplication');
-var closeModalButton = document.querySelector('.closeModalButton');
+var modal = document.querySelector('.modal-add-application');
+var closeModalButton = document.querySelector('.close-modal-button');
 var modalTriggers = document.querySelectorAll('[data-trigger]');
 
 var isModalOpen = false;
@@ -42,7 +61,7 @@ var pageYOffset = 0;
 
 var openModal = function() {
     pageYOffset = window.pageYOffset;
-    modal.classList.add('is-opesssn');
+    modal.classList.add('is-open');
     isModalOpen = true;
 }
 
@@ -67,29 +86,3 @@ document.addEventListener('scroll', onScroll);
 closeModalButton.addEventListener('click', closeModal);
 })();
 
-let editButton = document.querySelector('#edit-personal-information');
-let editButtonClickCounter = 0;
-
-let editedFIO = document.getElementById('edited-fio');
-let editedPhoneNumber = document.getElementById('edited-phone-number');
-let editedLogin = document.getElementById('edited-login');
-let editedPassword = document.getElementById('edited-password');
-
-let editedData = document.getElementsByClassName('profile-input');
-
-editButton.addEventListener('click', function () {
-    editButtonClickCounter++;
-    if(editButtonClickCounter % 2 != 0){
-        editedData.forEach(element => {
-            element.readOnly = false;
-            element.classList.remove('unchanged');
-        });
-        editButton.value = 'Сохранить';
-    } else if (editButtonClickCounter % 2 == 0){
-        editedData.forEach(element => {
-        element.readOnly = true;
-        element.classList.add('unchanged');
-    });
-        editButton.value = 'Изменить';
-    }
-});

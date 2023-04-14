@@ -30,7 +30,32 @@ app.get('/autentication', function(req, res) {
 
 app.get('/applications', function(req, res) {
     if (req.session.userLogin) {
-        res.render('applicationsPage');
+        let  applications = new Array();
+        let index = 0;
+        dbModule.db.get(`SELECT id FROM users WHERE login = '${req.session.userLogin}'`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
+            } else if (result) {
+                let userTableName = 'id_' + result.id + '_applications';
+                dbModule.db.all(`SELECT * FROM ${userTableName}`, (err, result) => {
+                    if (err) {
+                        console.log('FINDING APPLICATIONS FAILED', err);
+                    } else if (result) {
+                        console.log('TABLE DETECTED');
+                        result.forEach(function(item) {
+                            applications[index] = new dbModule.Application(
+                                item.type,
+                                item.sum,
+                                item.dueDate,
+                                item.status
+                            );
+                            index++;
+                        });
+                        res.render('applicationsPage', { applicationsData: applications, error: 'blocks/noErrors.ejs' });
+                    }
+                });
+            }
+        });
     } else {
         res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
     }
@@ -217,4 +242,47 @@ app.post('/saveChanges', urlencodedParser, function(req, res) {
         });
     }
 });
+
+//создание заявки
+app.post('/createAnApplication', urlencodedParser, function(req, res) {
+    if (!req.body) {
+        res.render('applicationsPage', { error: 'blocks/dataNotFilled.ejs' });
+    } else {
+        let newApplication = new dbModule.Application(
+            req.body.applicationType,
+            req.body.sum,
+            req.body.dueDate,
+            'На рассмотрении'
+        );
+        
+        dbModule.Applications.addApplication(req.session.userLogin, newApplication);
+
+        let applications = new Array();
+        let index = 0;
+        dbModule.db.get(`SELECT id FROM users WHERE login = '${req.session.userLogin}'`, (err, result) => {
+            if (err) {
+                console.log('FINDING USER APPLICATIONS TABLE FAILED', err);
+            } else if (result) {
+                let userTableName = 'id_' + result.id + '_applications';
+                dbModule.db.all(`SELECT * FROM ${userTableName}`, (err, result) => {
+                    if (err) {
+                        console.log('FINDING APPLICATIONS FAILED', err);
+                    } else if (result) {
+                        console.log('TABLE DETECTED');
+                        result.forEach(function(item) {
+                            applications[index] = new dbModule.Application(
+                                item.type,
+                                item.sum,
+                                item.dueDate,
+                                item.status
+                            );
+                            index++;
+                        });
+                        res.render('applicationsPage', { applicationsData: applications, error: 'blocks/noErrors.ejs' });
+                    }
+                });
+            }
+        });
+    }
+})
 app.listen(3000);

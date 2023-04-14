@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Главная | ProCredit</title>
-</head>
+  </head>
 
-<body>
-    <header>
-        <div class="header">
-            <a href="mainPage.html" id="logo">Pro Credit</a>
-            <a href="applicationsPage.html" id="applications-link">Заявки</a>
-            <a href="autenticationPage.html" id="profile-link">Профиль</a>
-        </div>
-    </header>
+  <body>
     <main>
-        <div class="main-page">
-            <h1 id="services">Услуги</h1>
-            <div class="services-boxes-container">
-                <div class="services-boxes" id="cash-credit-box">
-                    <p id="cash-credit-title">Кредит наличными</p>
-                    <img id="cash-credit-icon" src="/public/img/cashCreditIcon.svg" />
-                </div>
-                <div class="services-boxes" id="credit-card-box">
-                    <p id="credit-card-title">Оформление кредитной карты</p>
-                    <img id="credit-card-icon" src="/public/img/creditCardIcon.svg" />
-                </div>
-                <div class="services-boxes" id="education-credit-box">
-                    <p id="education-credit-title">Кредит на образование</p>
-                    <img id="education-credit-icon" src="/public/img/educationCreditIcon.svg" />
-                </div>
-                <div class="services-boxes" id="mortgage-box">
-                    <p id="mortgag-tTitle">Ипотека</p>
-                    <img id="mortgage-icon" src="/public/img/mortgageIcon.svg" />
-                </div>
-                <div class="services-boxes" id="autoCreditBox">
-                    <p id="auto-credit-title">Автокредит</p>
-                    <img id="auto-credit-icon" src="/public/img/autoCreditIcon.svg" />
-                </div>
-                <div class="services-boxes" id="business-credit-box">
-                    <p id="business-credit-title">Кредит на открытие бизнеса</p>
-                    <img id="business-creditIcon" src="/public/img/businessCreditIcon.svg" />
-                </div>
-            </div>
+      <div>
+        <div class="header">
+          <a href="/" id="logo">Pro Credit</a>
+          <a href="/applications" id="applications-link">Заявки</a>
+          <a href="/profile" id="profile-link">Профиль</a>
         </div>
+        <div class="main-page">
+          <h1 id="services">Услуги</h1>
+          <div class="services-boxes-container">
+            <div class="service-box box-animation" id="cash-credit-box">
+              <p id="cash-credit-title">Кредит наличными</p>
+              <img id="cash-credit-icon" src="/public/img/cashCreditIcon.svg" />
+            </div>
+            <div class="service-box box-animation" id="credit-card-box">
+              <p id="credit-card-title">Оформление кредитной карты</p>
+              <img id="credit-card-icon" src="/public/img/creditCardIcon.svg" />
+            </div>
+            <div class="service-box box-animation" id="education-credit-box">
+              <p id="education-credit-title">Кредит на образование</p>
+              <img
+                id="education-credit-icon"
+                src="/public/img/educationCreditIcon.svg" />
+            </div>
+            <div class="service-box box-animation" id="mortgage-box">
+              <p id="mortgag-tTitle">Ипотека</p>
+              <img id="mortgage-icon" src="/public/img/mortgageIcon.svg" />
+            </div>
+            <div class="service-box box-animation" id="autoCreditBox">
+              <p id="auto-credit-title">Автокредит</p>
+              <img id="auto-credit-icon" src="/public/img/autoCreditIcon.svg" />
+            </div>
+            <div class="service-box box-animation" id="business-credit-box">
+              <p id="business-credit-title">Кредит на открытие бизнеса</p>
+              <img
+                id="business-creditIcon"
+                src="/public/img/businessCreditIcon.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer">
-        <p id="author">Disigned by @perpetuumm0bi1e</p>
-        <p id="author">2023</p>
+      <p id="author">Disigned by @perpetuumm0bi1e</p>
+      <p id="author">2023</p>
     </footer>
-</body>
-
+  </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>
