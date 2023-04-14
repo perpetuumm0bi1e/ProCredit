@@ -32,7 +32,7 @@ class Users {
                     console.log('FINDING USER FAILED', err);
                     rej('User does not exist');
                 } else if (result) {
-                    console.log('User detected');
+                    console.log('USER DETECTED');
                     res(result);
                 }
             });
@@ -69,7 +69,7 @@ class Users {
             } else if (result) {
                 let userTableName = 'id_' + result.id + '_applications';
                 db.run(`DROP TABLE IF EXISTS ${userTableName}`, (err) => {
-                    if(err){
+                    if (err) {
                         console.log('DELETING USER TABLE ERROR', err);
                     } else {
                         console.log('USER TABLE SUCCESSFULLY DELETED');
@@ -84,18 +84,20 @@ class Users {
                 console.log('USER SUCCESSFULLY DELETED');
             }
         });
-        
+
     }
     static editUser(login, newData) {
-        db.run(`UPDATE users SET surname = ${newData.surname}, 
-                                 name = ${newData.name}, 
-                                 patronymic = ${newData.patronymic}, 
-                                 phone = ${newData.phone}, 
-                                 login = ${newData.login}, 
-                                 password = ${newData.password}
-                            WHERE login = '${login}'`,  (err) => {
+        db.run(`UPDATE users 
+                SET 
+                surname = ?, 
+                name = ?, 
+                patronymic = ?, 
+                phone = ?, 
+                login = ?, 
+                password = ?
+                WHERE login = '${login}'`, newData.surname, newData.name, newData.patronymic, newData.phone, newData.login, newData.password, (err) => {
             if (err) {
-                console.log('EDITING USER FAILED', err);
+                console.log(err);
             } else {
                 console.log('USER DATA SUCCESSFULLY EDITED');
             }
@@ -124,7 +126,7 @@ class Applications {
                     if (err) {
                         console.log('FINDING APPLICATIONS FAILED', err);
                     } else if (result) {
-                        console.log('Table detected');
+                        console.log('TABLE DETECTED');
                         return result;
                     }
                 });

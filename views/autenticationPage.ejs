@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <title>Вход | ProCredit</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <main>
-      <%- include('blocks/header.ejs') %>
-      <div class="autentication-page">
-        <h1 id="autentication">Вход</h1>
-        <div class="autentication-box">
-          <form id="autentication-form" method="post" action="/autenticated">
-            <input
-              type="text"
-              class="input"
-              name="autenticationLogin"
-              placeholder="Логин" />
-            <input
-              type="password"
-              class="input"
-              name="autenticationPassword"
-              placeholder="Пароль" />
-            <input class="button-type-1" type="submit" value="Войти" />
-            <button class="unbordered-button">
+        <%- include('blocks/header.ejs') %>
+            <div class="autentication-page">
+                <h1 id="autentication">Вход</h1>
+                <div class="autentication-box">
+                    <form id="autentication-form" method="post" action="/autenticated">
+                        <input type="text" class="input" name="autenticationLogin" placeholder="Логин" />
+                        <input type="password" class="input" name="autenticationPassword" placeholder="Пароль" />
+                        <%- include(error) %>
+                            <input class="button-type-1" type="submit" value="Войти" />
+                            <button class="unbordered-button">
               <a href="/registration">Зарегистрироваться</a>
             </button>
-          </form>
-        </div>
-      </div>
+                    </form>
+                </div>
+            </div>
     </main>
     <footer class="footer">
-      <p id="author">Disigned by @perpetuumm0bi1e</p>
-      <p id="author">2023</p>
+        <p id="author">Disigned by @perpetuumm0bi1e</p>
+        <p id="author">2023</p>
     </footer>
-  </body>
-  <script type="text/javascript" src="/public/script.js"></script>
+</body>
+<script type="text/javascript" src="/public/script.js"></script>
+
 </html>

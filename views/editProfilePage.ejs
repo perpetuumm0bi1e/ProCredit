@@ -11,44 +11,46 @@
 </head>
 
 <body>
-        <main>
-            <%- include('blocks/header.ejs') %>
+    <main>
+        <%- include('blocks/header.ejs') %>
             <div class="profile-page">
-            <h1 id="profile">Профиль</h1>
-            <div class="profile-box">
-                <form method="post" action="/saveChanges">
-                    <div class="user-data">
-                        <div class="profile-personal-data">
-                            <p class="sub-heading" id="contact-information-label">
-                                Личные данные
-                            </p>
-                            <p id="fio" class="data-category">ФИО</p>
-                            <input class="input description profile-input" type="text" name="newFIO" value="<%= surname %> <%= name %> <%= patronymic %>"  />
-                            <p id="phone-number" class="data-category">Контактный номер</p>
-                            <input class="input description  profile-input" type="text" name="newPhone" value="+<%= phone %>"  />
+                <h1 id="profile">Профиль</h1>
+                <div class="profile-box">
+                    <form method="post" action="/saveChanges">
+                        <div class="user-data">
+                            <div class="profile-personal-data">
+                                <p class="sub-heading" id="contact-information-label">
+                                    Личные данные
+                                </p>
+                                <p id="fio" class="data-category">ФИО</p>
+                                <input class="input description profile-input" type="text" name="newFIO" value="<%= surname %> <%= name %> <%= patronymic %>" />
+                                <p id="phone-number" class="data-category">Контактный номер</p>
+                                <input class="input description  profile-input" type="text" name="newPhone" value="+<%= phone %>" />
+                            </div>
+                            <div class="profile-login-data">
+                                <p class="sub-heading" id="contact-information-label">
+                                    Данные для входа
+                                </p>
+                                <p id="profile-login" class="data-category">Логин</p>
+                                <input class="input description profile-input" type="text" name="newLogin" value="<%=login%>" />
+                                <p id="profile-password" class="data-category">Пароль</p>
+                                <input class="input description profile-input" type="password" name="newPassword" value="<%=password%>" />
+                            </div>
                         </div>
-                        <div class="profile-login-data">
-                            <p class="sub-heading" id="contact-information-label">
-                                Данные для входа
-                            </p>
-                            <p id="profile-login" class="data-category">Логин</p>
-                            <input class="input description profile-input" type="text" name="newLogin" value="<%=login%>"  />
-                            <p id="profile-password" class="data-category">Пароль</p>
-                            <input class="input description profile-input" type="password" name="newPassword" value="<%=password%>"  />
-                        </div>
-                    </div>
-                    <div class="profile-box-buttons">
-                        <button class="unbordered-button">
+                        <%- include(error) %>
+                            <div class="profile-box-buttons">
+                                <button class="unbordered-button">
                           <a href="/profile">Отменить изменения</a>
                         </button>
-                        <input type="submit" class="button-type-1" id="edit-personal-information" name="editPersonalInformation" value="Сохранить" />
-                    </div>
-                </form>
-            </div>
-        </main>
-        <footer class="footer">
-            <p id="author">Disigned by @perpetuumm0bi1e</p>
-        </footer>
+                                <input type="submit" class="button-type-1" id="edit-personal-information" name="editPersonalInformation" value="Сохранить" />
+                            </div>
+                    </form>
+                </div>
+    </main>
+    <footer class="footer">
+        <p id="author">Disigned by @perpetuumm0bi1e</p>
+    </footer>
 </body>
 <script type="text/javascript" src="/public/script.js"></script>
+
 </html>

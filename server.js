@@ -25,19 +25,19 @@ app.get('/', function(req, res) {
 });
 
 app.get('/autentication', function(req, res) {
-    res.render('autenticationPage');
+    res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
 });
 
 app.get('/applications', function(req, res) {
     if (req.session.userLogin) {
         res.render('applicationsPage');
     } else {
-        res.render('autenticationPage');
+        res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
     }
 });
 
 app.get('/registration', function(req, res) {
-    res.render('registrationPage');
+    res.render('registrationPage', { error: 'blocks/noErrors.ejs' });
 });
 
 app.get('/profile', function(req, res) {
@@ -48,9 +48,10 @@ app.get('/profile', function(req, res) {
             patronymic: req.session.userPatronymic,
             phone: req.session.userPhone,
             login: req.session.userLogin,
-            password: req.session.userPassword});
+            password: req.session.userPassword
+        });
     } else {
-        res.render('autenticationPage');
+        res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
     }
 });
 
@@ -58,24 +59,25 @@ app.get('/profile', function(req, res) {
 
 app.post('/registered', urlencodedParser, function(req, res) {
     if (!req.body) {
-        return res.sendStatus(400);
+        res.render('registrationPage', { error: 'blocks/dataNotFilled.ejs' }); // данные не введены
     } else {
         if (req.body.passwordFirst == req.body.passwordSecond) {
-            console.log('Passwords matched. User successfully registered.');
+            let phoneNumber = req.body.phone.split('+');
             let patronymic;
-            if(req.body.patronymic == undefined){
+
+            if (req.body.patronymic == undefined) {
                 patronymic = '';
             } else {
                 patronymic = req.body.patronymic;
             }
-            let phoneNumber = req.body.phone.split('+');
+
             req.session.userSurname = req.body.surname;
             req.session.userName = req.body.name;
             req.session.userPatronymic = patronymic;
             req.session.userPhone = phoneNumber[1];
             req.session.userLogin = req.body.login;
             req.session.userPassword = req.body.passwordFirst;
-            console.log(req.session);
+
             let newUser = new dbModule.User(
                 req.body.surname,
                 req.body.name,
@@ -95,29 +97,27 @@ app.post('/registered', urlencodedParser, function(req, res) {
                 password: newUser.password
             });
         } else {
-            console.log("Passwords don't match");
-            res.render('registrationPage');
+            res.render('registrationPage', { error: 'blocks/unmatchedPasswords.ejs' }); //па  пароли не совпали
         }
     }
 });
 // обработка данных из формы на странице аутентификации
 app.post('/autenticated', urlencodedParser, function(req, res) {
     if (!req.body) {
-        return res.sendStatus(400);
+        res.render('autenticationPage', { error: 'blocks/dataNotFilled.ejs' }); // данные не введены
     } else {
         dbModule.db.get(`SELECT * FROM users WHERE login = '${req.body.autenticationLogin}'`, (err, result) => {
             if (err) {
-                console.log('FINDING USER FAILED', err);
-                res.render('autenticationPage'); // передать ошибку
+                res.render('autenticationPage', { error: 'blocks/nonexistendUser.ejs' }); // передать ошибку
             } else if (result) {
                 if (result.password == req.body.autenticationPassword) {
-                    console.log('Passwords matched. User successfully autenticated.');
                     req.session.userSurname = result.surname;
                     req.session.userName = result.name;
                     req.session.userPatronymic = result.patronymic;
                     req.session.userPhone = result.phone;
                     req.session.userLogin = result.login;
                     req.session.userPassword = result.password;
+
                     res.render('profilePage', {
                         surname: result.surname,
                         name: result.name,
@@ -127,12 +127,10 @@ app.post('/autenticated', urlencodedParser, function(req, res) {
                         password: result.password
                     });
                 } else if (result.password != req.body.autenticationPassword) {
-                    console.log("Incorrect password.");
-                    res.render('autenticationPage'); // передать ошибку
+                    res.render('autenticationPage', { error: 'blocks/incorrectPassword.ejs' }); // неправильынй пароль                }
+                } else {
+                    res.render('autenticationPage', { error: 'blocks/nonexistentUser.ejs' }); // пользователь не найден
                 }
-            } else if(result=undefined){
-                console.log('FINDING USER FAILED', err);
-                res.render('autenticationPage'); // передать ошибку
             }
         });
     }
@@ -140,48 +138,83 @@ app.post('/autenticated', urlencodedParser, function(req, res) {
 
 //обработка данных сос траницы профиля
 app.post('/editAccount', urlencodedParser, function(req, res) {
-    if(req.body.editPersonalInformation){
-        console.log(req.session);
+    if (req.body.editPersonalInformation) {
         res.render('editProfilePage', {
             surname: req.session.userSurname,
             name: req.session.userName,
             patronymic: req.session.userPatronymic,
             phone: req.session.userPhone,
             login: req.session.userLogin,
-            password: req.session.userPassword});
-    } else if(req.body.logOut){
+            password: req.session.userPassword,
+            error: 'blocks/noErrors.ejs'
+        });
+    } else if (req.body.logOut) {
         req.session.destroy();
-        res.render('autenticationPage');
-    } else if(req.body.deleteAnAccount){
+        res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
+    } else if (req.body.deleteAnAccount) {
         dbModule.Users.deleteUser(req.session.userLogin);
-        res.render('autenticationPage');
+        res.render('autenticationPage', { error: 'blocks/noErrors.ejs' });
     }
 })
 
 //обработка данных после изменения аккаунта
 app.post('/saveChanges', urlencodedParser, function(req, res) {
-    let newFIOParsed = req.body.newFIO.split(' ');
-    let phoneNumber = req.body.newPhone.split('+');
-    let newData = {
-        surname: newFIOParsed[0],
-        name: newFIOParsed[1],
-        patronymic: newFIOParsed[2],
-        phone: phoneNumber[1],
-        login: req.body.newLogin,
-        password: req.body.newPhone
-    };
-    dbModule.Users.editUser(req.session.userLogin, newData);
+    if (!req.body) {
+        res.render('editProfilePage', {
+            surname: req.session.userSurname,
+            name: req.session.userName,
+            patronymic: req.session.userPatronymic,
+            phone: req.session.userPhone,
+            login: req.session.userLogin,
+            password: req.session.userPassword,
+            error: 'blocks/dataNotFilled.ejs'
+        });
+    } else {
+        let phoneNumber = req.body.newPhone.split('+');
+        let newFIOParsed = req.body.newFIO.split(' ');
+        let patronymic;
 
-    req.session.userSurname = newData.surname;
-    req.session.userName = newData.name;
-    req.session.userPatronymic = newData.patronymic;
-    req.session.userPhone = newData.phone;
-    req.session.userLogin = newData.login;
-    req.session.userPassword = newData.password;
+        if (newFIOParsed.length == 2) {
+            patronymic = '';
+        } else {
+            patronymic = newFIOParsed[2];
+        }
+        if (newFIOParsed.length > 3 || newFIOParsed.length < 2) {
+            res.render('editProfilePage', {
+                surname: req.session.userSurname,
+                name: req.session.userName,
+                patronymic: req.session.userPatronymic,
+                phone: req.session.userPhone,
+                login: req.session.userLogin,
+                password: req.session.userPassword,
+                error: 'blocks/incorrectFIOLength.ejs'
+            });
+        }
+        let newData = new dbModule.User(
+            newFIOParsed[0],
+            newFIOParsed[1],
+            patronymic,
+            phoneNumber[1],
+            req.body.newLogin,
+            req.body.newPassword);
+        dbModule.Users.editUser(req.session.userLogin, newData);
 
-    if(newFIOParsed.length > 3 && newFIOParsed.length < 2){
-        //ошибка
+        req.session.userSurname = newData.surname;
+        req.session.userName = newData.name;
+        req.session.userPatronymic = newData.patronymic;
+        req.session.userPhone = newData.phone;
+        req.session.userLogin = newData.login;
+        req.session.userPassword = newData.password;
+
+        res.render('profilePage', {
+            surname: req.session.userSurname,
+            name: req.session.userName,
+            patronymic: req.session.userPatronymic,
+            phone: req.session.userPhone,
+            login: req.session.userLogin,
+            password: req.session.userPassword,
+            error: 'blocks/noErrors.ejs'
+        });
     }
-
-})
+});
 app.listen(3000);
